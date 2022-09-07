@@ -1,6 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import AbstractBaseUser, BaseUserManager
-
+from phonenumber_field.modelfields import PhoneNumberField
 # Create your models here.
 class MyUserManager(BaseUserManager):
     def create_user(self, email, password=None):
@@ -48,7 +48,7 @@ class Profile(models.Model):
     user = models.ForeignKey(MyUser, on_delete=models.CASCADE)
     name = models.CharField(max_length=100)
     location = models.CharField(max_length=100, blank=True)
-    phone_number = models.CharField(max_length= 20, blank=True)
+    phone_number = PhoneNumberField(blank=True, verbose_name="Phone number(+234.....)")
     date_of_birth = models.DateField(blank=True)
     user_image = models.ImageField(upload_to="user_image", blank=True)
 

@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     # 'django.contrib.sites',
     # 3rd party apps
     'ki',
+    "phonenumber_field",
 ]
 AUTH_USER_MODEL = 'ki.MyUser'
 
