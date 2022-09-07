@@ -1,2 +1,4 @@
 # KI_Ecommerce-
-An ecommerce collaboration
+An ecommerce collaboration with kassy
+
+
