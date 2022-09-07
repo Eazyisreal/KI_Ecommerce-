@@ -87,5 +87,3 @@ def thank_you(request):
 
 def wishlist(request):
     return render(request, "wishlist.html", {})
-
-def j   
