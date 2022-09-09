@@ -10,19 +10,21 @@ def signup_user(request):
         form = MyUserForm(request.POST)
         if form.is_valid():
             form.save()
-            messages.info(request, "cool work")
+            messages.info(request, "You have registered successful")
             return redirect('signup_user')
         else:
-            messages.info(request, "invalid input")
+            messages.info(request, "invalid input. please try again")
             return redirect('signup_user')
     context = {'form':form}
-    return render(request, 'signup.html', context)
+    return render(request, 'authentication_register.html', context)
 
 
 
 def aboutus(request):
     return render(request, "aboutus.html", {})
 
+def test(request):
+    return render(request, "text.html")
 
 def index(request):
     return render(request, "index.html", {})
@@ -32,10 +34,10 @@ def account_dashboard(request):
     return render(request, "account_dashboard.html", {})
 
 def account_edit(request):
-    return render(request, "account_edit.html", {})
+    return render(request, "account_edit_profile.html", {})
 
-def account_orders(request):
-    return render(request, "account_orders.html", {})
+# def account_orders(request):
+    # return render(request, "account_orders.html", {})
 
 def account_profile(request):
     return render(request, "account_profile.html", {})
@@ -87,3 +89,5 @@ def thank_you(request):
 
 def wishlist(request):
     return render(request, "wishlist.html", {})
+
+

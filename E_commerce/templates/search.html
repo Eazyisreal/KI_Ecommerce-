@@ -1,4 +1,5 @@
-﻿<!doctype html>
+﻿{% load static %}
+<!doctype html>
 <html lang="en"> 
 
 <head>
@@ -6,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <!--favicon-->
-	<link rel="icon" href="assets/images/logo1.webp" type="image/webp">
+	<link rel="icon" href="{%static 'assets/images/logo1.webp' %}" type="image/webp">
 
   <!-- CSS files -->
   <link href="assets/css/bootstrap.min.css" rel="stylesheet">
@@ -14,11 +15,11 @@
   <link rel="stylesheet" href="../../../npm/bootstrap-icons%401.7.2/font/bootstrap-icons.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
   <!-- Plugins -->
-  <link rel="stylesheet" type="text/css" href="assets/plugins/slick/slick.css">
-  <link rel="stylesheet" type="text/css" href="assets/plugins/slick/slick-theme.css">
+  <link rel="stylesheet" type="text/css" href="{%static 'assets/plugins/slick/slick.css' %}">
+  <link rel="stylesheet" type="text/css" href="{%static 'assets/plugins/slick/slick-theme.css' %}">
 
-  <link href="assets/css/style.css" rel="stylesheet">
-  <link href="assets/css/dark-theme.css" rel="stylesheet">
+  <link href="{%static 'assets/css/style.css' %}" rel="stylesheet">
+  <link href="{%static 'assets/css/dark-theme.css' %}" rel="stylesheet">
 
   <title>KassyandI</title>
 </head>
@@ -191,11 +192,11 @@
 
 
   <!-- JavaScript files -->
-  <script src="assets/js/bootstrap.bundle.min.js"></script>
-  <script src="assets/js/jquery.min.js"></script>
-  <script src="assets/plugins/slick/slick.min.js"></script>
-  <script src="assets/js/main.js"></script>
-  <script src="assets/js/loader.js"></script>
+  <script src="{%static 'assets/js/bootstrap.bundle.min.js' %}"></script>
+  <script src="{%static 'assets/js/jquery.min.js' %}"></script>
+  <script src="{%static 'assets/plugins/slick/slick.min.js' %}"></script>
+  <script src="{%static 'assets/js/main.js' %}"></script>
+  <script src="{%static 'assets/js/loader.js' %}"></script>
 
 </body>
 
