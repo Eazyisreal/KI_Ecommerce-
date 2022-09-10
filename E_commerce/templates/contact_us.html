@@ -13,7 +13,7 @@
     <div class="container">
       <nav aria-label="breadcrumb">
         <ol class="breadcrumb mb-0"> 
-          <li class="breadcrumb-item"><a href="javascript:;">Home</a></li>
+          <li class="breadcrumb-item"><a href="{%url 'index' %}">Home</a></li>
           <li class="breadcrumb-item"><a href="javascript:;">Pages</a></li>
           <li class="breadcrumb-item active" aria-current="page">Contact Us</li>
         </ol>
@@ -34,7 +34,7 @@
       </div>
 
       <div class="border p-3">
-        <iframe class="w-100" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d805184.6320105711!2d144.49269039866502!3d-37.971237001538135!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6ad646b5d2ba4df7%3A0x4045675218ccd90!2sMelbourne%20VIC%2C%20Australia!5e0!3m2!1sen!2sin!4v1654250375825!5m2!1sen!2sin" height="450" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        <iframe class="w-100" src="https://maps.google.com/maps?q=lagos,%20nigeria&t=k&z=13&ie=UTF8&iwloc=&output=embed" height="450" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
       </div>
 
        <div class="separator my-3">
@@ -77,13 +77,13 @@
           <div class="p-3 border">
             <div class="address mb-3">
               <h5 class="mb-0 fw-bold">Address</h5>
-              <p class="mb-0 font-12">123 Street Name, City, Australia</p>
+              <p class="mb-0 font-12">lagos, Nigeria</p>
             </div>
             <hr>
             <div class="phone mb-3">
               <h5 class="mb-0 fw-bold">Phone</h5>
-              <p class="mb-0 font-13">Toll Free (123) 472-796</p>
-              <p class="mb-0 font-13">Mobile : +91-9910XXXX</p>
+              <p class="mb-0 font-13">Toll Free (123) 456-789</p>
+              <p class="mb-0 font-13">Mobile : +234-xxx-xxx-xxxx</p>
             </div>
             <hr>
             <div class="email mb-3">
@@ -113,7 +113,7 @@
        <div class="row row-cols-1 row-cols-lg-4 g-4">
         <div class="col">
           <div class="footer-widget-6">
-            <img src="assets/images/logo1.png" class="logo-img mb-3" alt="">
+            <img src="{% static 'assets/images/logo1.png' %}" class="logo-img mb-3" alt="">
             <h5 class="mb-3 fw-bold">About Us</h5>
              <p class="mb-2">There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable.</p>
 
@@ -179,8 +179,8 @@
 
         <div class="d-flex align-items-center gap-3">
           <div class="bottom-product-img">
-            <a href="product-details.html">
-              <img src="assets/images/new-arrival/01.webp" width="60" alt="">
+            <a href="{% url 'product_details' %}">
+              <img src="{% static 'assets/images/new-arrival/01.webp' %}" width="60" alt="">
             </a>
           </div>
           <div class="">
@@ -196,7 +196,7 @@
         <div class="d-flex align-items-center gap-3">
           <div class="bottom-product-img">
             <a href="product-details.html">
-              <img src="assets/images/new-arrival/02.webp" width="60" alt="">
+              <img src="{% static 'assets/images/new-arrival/02.webp' %}" width="60" alt="">
             </a>
           </div>
           <div class="">
@@ -212,7 +212,7 @@
         <div class="d-flex align-items-center gap-3">
           <div class="bottom-product-img">
             <a href="product-details.html">
-              <img src="assets/images/new-arrival/03.webp" width="60" alt="">
+              <img src="{% static  'assets/images/new-arrival/03.webp' %}" width="60" alt="">
             </a>
           </div>
           <div class="">
@@ -228,7 +228,7 @@
         <div class="d-flex align-items-center gap-3">
           <div class="bottom-product-img">
             <a href="product-details.html">
-              <img src="assets/images/new-arrival/04.webp" width="60" alt="">
+              <img src="{% static 'assets/images/new-arrival/04.webp' %}" width="60" alt="">
             </a>
           </div>
           <div class="">
@@ -244,7 +244,7 @@
         <div class="d-flex align-items-center gap-3">
           <div class="bottom-product-img">
             <a href="product-details.html">
-              <img src="assets/images/new-arrival/05.webp" width="60" alt="">
+              <img src="{% static 'assets/images/new-arrival/05.webp' %}" width="60" alt="">
             </a>
           </div>
           <div class="">
@@ -260,7 +260,7 @@
         <div class="d-flex align-items-center gap-3">
           <div class="bottom-product-img">
             <a href="product-details.html">
-              <img src="assets/images/new-arrival/06.webp" width="60" alt="">
+              <img src="{% static 'assets/images/new-arrival/06.webp' %}" width="60" alt="">
             </a>
           </div>
           <div class="">
@@ -276,7 +276,7 @@
         <div class="d-flex align-items-center gap-3">
           <div class="bottom-product-img">
             <a href="product-details.html">
-              <img src="assets/images/new-arrival/07.webp" width="60" alt="">
+              <img src="{% static 'assets/images/new-arrival/07.webp' %}" width="60" alt="">
             </a>
           </div>
           <div class="">
@@ -292,7 +292,7 @@
         <div class="d-flex align-items-center gap-3">
           <div class="bottom-product-img">
             <a href="product-details.html">
-              <img src="assets/images/new-arrival/08.webp" width="60" alt="">
+              <img src="{% static 'assets/images/new-arrival/08.webp' %}" width="60" alt="">
             </a>
           </div>
           <div class="">
@@ -308,7 +308,7 @@
         <div class="d-flex align-items-center gap-3">
           <div class="bottom-product-img">
             <a href="product-details.html">
-              <img src="assets/images/new-arrival/09.webp" width="60" alt="">
+              <img src="{% static 'assets/images/new-arrival/09.webp' %}" width="60" alt="">
             </a>
           </div>
           <div class="">
@@ -324,7 +324,7 @@
         <div class="d-flex align-items-center gap-3">
           <div class="bottom-product-img">
             <a href="product-details.html">
-              <img src="assets/images/new-arrival/10.webp" width="60" alt="">
+              <img src="{% static 'assets/images/new-arrival/10.webp' %}" width="60" alt="">
             </a>
           </div>
           <div class="">
