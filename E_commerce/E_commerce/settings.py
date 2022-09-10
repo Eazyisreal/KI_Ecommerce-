@@ -42,8 +42,9 @@ INSTALLED_APPS = [
     # 3rd party apps
     'ki',
     "phonenumber_field",
+    "account",
 ]
-AUTH_USER_MODEL = 'ki.MyUser'
+AUTH_USER_MODEL = 'account.MyUser'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -74,7 +75,7 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'E_commerce.wsgi.application'
-AUTH_USER_MODEL = "ki.MyUser"
+AUTH_USER_MODEL = "account.MyUser"
 
 
 # Database

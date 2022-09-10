@@ -1,23 +1,9 @@
 from django.shortcuts import render, redirect
-from ki.forms import MyUserForm
 from django.contrib import messages
+from django.contrib.auth.decorators import login_required
+
 
 # Create your views here.
-
-def signup_user(request):
-    form = MyUserForm()
-    if request.method == "POST":
-        form = MyUserForm(request.POST)
-        if form.is_valid():
-            form.save()
-            messages.info(request, "You have registered successful")
-            return redirect('signup_user')
-        else:
-            messages.info(request, "invalid input. please try again")
-            return redirect('signup_user')
-    context = {'form':form}
-    return render(request, 'authentication_register.html', context)
-
 
 
 def aboutus(request):
@@ -29,7 +15,7 @@ def test(request):
 def index(request):
     return render(request, "index.html", {})
 
-
+@login_required(login_url='authentication_login')
 def account_dashboard(request):
     return render(request, "account_dashboard.html", {})
 
@@ -44,12 +30,6 @@ def account_profile(request):
 
 def address(request):
     return render(request, "address.html", {})
-
-def authentication_login(request):
-    return render(request, "authentication_login.html", {})
-
-def authentication_reset_password(request):
-    return render(request, "authentication_reset_password.html", {})
 
 def billing_details(request):
     return render(request, "billing_details.html", {})

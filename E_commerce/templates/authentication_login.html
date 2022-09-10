@@ -45,15 +45,19 @@
                   <p class="mb-0 fw-bold">Or</p>
                   <div class="line"></div>
                 </div>
-                 <form>
+                  <form action="" method="POST">
+                    {% csrf_token %}
+                    {% for message in messages %}
+                    <p class="text-center"><strong>{{message}}</strong></p>
+                    {% endfor %}
                     <div class="row g-4">
                       <div class="col-12">
                           <label for="exampleUsername" class="form-label">Email</label>
-                          <input type="text" class="form-control rounded-0" id="exampleUsername">
+                          <input type="email" name="email" class="form-control rounded-0" id="exampleUsername">
                       </div>
                       <div class="col-12">
                         <label for="examplePassword" class="form-label">Password</label>
-                        <input type="text" class="form-control rounded-0" id="examplePassword">
+                        <input type="password" name="password" class="form-control rounded-0" id="examplePassword">
                       </div>
                       <div class="col-12">
                         <a href="javascript:;" class="text-content btn bg-light rounded-0 w-100"><i class="bi bi-lock me-2"></i>Forgot Password</a>
@@ -62,13 +66,13 @@
                        <hr class="my-0">
                      </div>
                       <div class="col-12">
-                        <button type="button" class="btn btn-dark rounded-0 btn-ecomm w-100">Login</button>
+                        <button type="submit" class="btn btn-dark rounded-0 btn-ecomm w-100">Login</button>
                       </div>
                       <div class="col-12 text-center">
                         <p class="mb-0 rounded-0 w-100">Don't have an account? <a href="{%url 'signup_user' %}" class="text-danger">Sign Up</a></p>
                       </div>
                     </div><!---end row-->
-                 </form>
+                  </form>
                </div>
              </div>
           </div>

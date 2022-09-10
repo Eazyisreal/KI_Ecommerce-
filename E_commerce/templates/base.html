@@ -1,6 +1,6 @@
 {% load static %}
 <!doctype html>
-<html lang="en" class="light-theme">
+<html lang="en">
 <head>
   <!-- Required meta tags -->
   <meta charset="utf-8">
@@ -147,8 +147,12 @@
                 <li>
                   <hr class="dropdown-divider">
                 </li>
+                {% if user.is_authenticated %}
+                <li><a class="dropdown-item" href="{%url 'logout_user' %}">Logout</a></li>
+                {% else %}
                 <li><a class="dropdown-item" href="{%url 'authentication_login' %}">Login</a></li>
                 <li><a class="dropdown-item" href="{%url 'signup_user' %}">Register</a></li>
+                {% endif %}
                 <li><a class="dropdown-item" href="{%url 'authentication_reset_password'%}">Password</a></li>
               </ul>
             </li>
