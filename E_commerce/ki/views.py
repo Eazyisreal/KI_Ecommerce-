@@ -22,8 +22,8 @@ def account_dashboard(request):
 def account_edit(request):
     return render(request, "account_edit_profile.html", {})
 
-# def account_orders(request):
-    # return render(request, "account_orders.html", {})
+def account_orders(request):
+    return render(request, "account_orders.html", {})
 
 def account_profile(request):
     return render(request, "account_profile.html", {})
@@ -69,5 +69,7 @@ def thank_you(request):
 
 def wishlist(request):
     return render(request, "wishlist.html", {})
+
+
 
 

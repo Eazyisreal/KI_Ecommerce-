@@ -32,7 +32,7 @@ def authentication_login(request):
             return redirect("/")
         else:
             messages.info(request, "invalid input. Input the correct information")
-            return redirect('authetication_login')
+            return redirect('authentication_login')
     return render(request, "authentication_login.html", {})
 
 
