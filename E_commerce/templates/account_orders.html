@@ -229,12 +229,11 @@
                   </div>
                   <div class="offcanvas-body account-menu">
                     <div class="list-group w-100 rounded-0">
-                      <a href="account-dashboard.html" class="list-group-item"><i class="bi bi-house-door me-2"></i>Dashboard</a>
-                      <a href="account-orders.html" class="list-group-item active"><i class="bi bi-basket3 me-2"></i>Orders</a>
-                      <a href="account-profile.html" class="list-group-item"><i class="bi bi-person me-2"></i>Profile</a>
-                      <a href="account-edit-profile.html" class="list-group-item"><i class="bi bi-pencil me-2"></i>Edit Profile</a>
-                      <a href="wishlist.html" class="list-group-item"><i class="bi bi-suit-heart me-2"></i>Wishlist</a>
-                      <a href="authentication-login.html" class="list-group-item"><i class="bi bi-power me-2"></i>Logout</a>
+                      <a href="{% url 'account_dashboard' %}" class="list-group-item"><i class="bi bi-house-door me-2"></i>Dashboard</a>
+                      <a href="{% url 'account_orders' %}" class="list-group-item"><i class=active"><i class="bi bi-basket3 me-2"></i>Orders</a>
+                      <a href="{% url 'account_edit' %}" class="list-group-item"><i class="bi bi-pencil me-2"></i>Edit Profile</a>
+                      <a href="{% url 'wishlist' %}" class="list-group-item"><i class="bi bi-suit-heart me-2"></i>Wishlist</a>
+                      <a href="{% url 'authentication_login' %}" class="list-group-item"><i class="bi bi-power me-2"></i>Logout</a>
                     </div>
                   </div>
                 </div>
@@ -505,7 +504,7 @@
         <div class="d-flex align-items-center gap-3">
           <div class="bottom-product-img">
             <a href="product-details.html">
-              <img src="assets/images/new-arrival/01.webp" width="60" alt="">
+              <img src="{% static 'assets/images/new-arrival/01.webp' %}" width="60" alt="">
             </a>
           </div>
           <div class="">
@@ -521,7 +520,7 @@
         <div class="d-flex align-items-center gap-3">
           <div class="bottom-product-img">
             <a href="product-details.html">
-              <img src="assets/images/new-arrival/02.webp" width="60" alt="">
+              <img src="{% static 'assets/images/new-arrival/02.webp' %}" width="60" alt="">
             </a>
           </div>
           <div class="">
@@ -537,7 +536,7 @@
         <div class="d-flex align-items-center gap-3">
           <div class="bottom-product-img">
             <a href="product-details.html">
-              <img src="assets/images/new-arrival/03.webp" width="60" alt="">
+              <img src="{% static 'assets/images/new-arrival/03.webp' %}" width="60" alt="">
             </a>
           </div>
           <div class="">
@@ -553,7 +552,7 @@
         <div class="d-flex align-items-center gap-3">
           <div class="bottom-product-img">
             <a href="product-details.html">
-              <img src="assets/images/new-arrival/04.webp" width="60" alt="">
+              <img src="{% static 'assets/images/new-arrival/04.webp' %}" width="60" alt="">
             </a>
           </div>
           <div class="">
@@ -569,7 +568,7 @@
         <div class="d-flex align-items-center gap-3">
           <div class="bottom-product-img">
             <a href="product-details.html">
-              <img src="assets/images/new-arrival/05.webp" width="60" alt="">
+              <img src="{% static 'assets/images/new-arrival/05.webp' %}" width="60" alt="">
             </a>
           </div>
           <div class="">
@@ -585,7 +584,7 @@
         <div class="d-flex align-items-center gap-3">
           <div class="bottom-product-img">
             <a href="product-details.html">
-              <img src="assets/images/new-arrival/06.webp" width="60" alt="">
+              <img src="{% static 'assets/images/new-arrival/06.webp' %}" width="60" alt="">
             </a>
           </div>
           <div class="">
@@ -601,7 +600,7 @@
         <div class="d-flex align-items-center gap-3">
           <div class="bottom-product-img">
             <a href="product-details.html">
-              <img src="assets/images/new-arrival/07.webp" width="60" alt="">
+              <img src="{% static 'assets/images/new-arrival/07.webp' %}" width="60" alt="">
             </a>
           </div>
           <div class="">
@@ -617,7 +616,7 @@
         <div class="d-flex align-items-center gap-3">
           <div class="bottom-product-img">
             <a href="product-details.html">
-              <img src="assets/images/new-arrival/08.webp" width="60" alt="">
+              <img src="{% static 'assets/images/new-arrival/08.webp' %}" width="60" alt="">
             </a>
           </div>
           <div class="">
@@ -633,7 +632,7 @@
         <div class="d-flex align-items-center gap-3">
           <div class="bottom-product-img">
             <a href="product-details.html">
-              <img src="assets/images/new-arrival/09.webp" width="60" alt="">
+              <img src="{% static 'assets/images/new-arrival/09.webp' %}" width="60" alt="">
             </a>
           </div>
           <div class="">
@@ -649,7 +648,7 @@
         <div class="d-flex align-items-center gap-3">
           <div class="bottom-product-img">
             <a href="product-details.html">
-              <img src="assets/images/new-arrival/10.webp" width="60" alt="">
+              <img src="{% static 'assets/images/new-arrival/10.webp' %}" width="60" alt="">
             </a>
           </div>
           <div class="">
@@ -680,11 +679,11 @@
   
 
    <!-- JavaScript files -->
-   <script src="assets/js/bootstrap.bundle.min.js"></script>
-   <script src="assets/js/jquery.min.js"></script>
-   <script src="assets/plugins/slick/slick.min.js"></script>
-   <script src="assets/js/main.js"></script>
-   <script src="assets/js/loader.js"></script>
+   <script src="{% static 'assets/js/bootstrap.bundle.min.js' %}"></script>
+   <script src="{% static 'assets/js/jquery.min.js' %}"></script>
+   <script src="{% static 'assets/plugins/slick/slick.min.js' %}"></script>
+   <script src="{% static 'assets/js/main.js' %}"></script>
+   <script src="{% static 'assets/js/loader.js' %}"></script>
 
 
 </body>

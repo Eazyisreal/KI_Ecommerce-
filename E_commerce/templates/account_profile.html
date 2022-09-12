@@ -1,6 +1,5 @@
 ﻿{% extends 'base.html' %}
 {% load static%}
-
 {% block content %}
 
 <!--start page content-->
@@ -40,7 +39,7 @@
               <div class="offcanvas-body account-menu">
                 <div class="list-group w-100 rounded-0">
                   <a href="{%url 'account_dashboard' %}" class="list-group-item"><i class="bi bi-house-door me-2"></i>Dashboard</a>
-                  <a href="#" class="list-group-item"><i class="bi bi-basket3 me-2"></i>Orders</a>
+                  <a href="{% url 'account_orders' %}" class="list-group-item"><i class="bi bi-basket3 me-2"></i>Orders</a>
                   <a href="{%url 'account_profile' %}" class="list-group-item active"><i class="bi bi-person me-2"></i>Profile</a>
                   <a href="{%url 'account_edit'%}" class="list-group-item"><i class="bi bi-pencil me-2"></i>Edit Profile</a>
                   <a href="{%url 'wishlist' %}" class="list-group-item"><i class="bi bi-suit-heart me-2"></i>Wishlist</a>
@@ -60,7 +59,7 @@
                       <tbody>
                         <tr>
                           <td>Full Name</td>
-                          <td>Jhon Deo</td>
+                          <td>John Doe</td>
                         </tr>
                         <tr>
                           <td>Email</td>
@@ -68,11 +67,11 @@
                         </tr>
                         <tr>
                           <td>Location</td>
-                          <td>United Kingdom</td>
+                          <td>Nigeria</td>
                         </tr>
                         <tr>
                           <td>Phone</td>
-                          <td>+99-85XXXXXXXX</td>
+                          <td>+234-85XXXXXXXX</td>
                         </tr>
                         <tr>
                           <td>DOB</td>
@@ -187,7 +186,7 @@
        <div class="row row-cols-1 row-cols-lg-4 g-4">
         <div class="col">
           <div class="footer-widget-6">
-            <img src="assets/images/logo1.png" class="logo-img mb-3" alt="">
+            <img src="{% static 'assets/images/logo1.png' %}" class="logo-img mb-3" alt="">
             <h5 class="mb-3 fw-bold">About Us</h5>
              <p class="mb-2">There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable.</p>
 
@@ -254,7 +253,7 @@
         <div class="d-flex align-items-center gap-3">
           <div class="bottom-product-img">
             <a href="product-details.html">
-              <img src="assets/images/new-arrival/01.webp" width="60" alt="">
+              <img src="{% static 'assets/images/new-arrival/01.webp' %}" width="60" alt="">
             </a>
           </div>
           <div class="">
@@ -270,7 +269,7 @@
         <div class="d-flex align-items-center gap-3">
           <div class="bottom-product-img">
             <a href="product-details.html">
-              <img src="assets/images/new-arrival/02.webp" width="60" alt="">
+              <img src="{% static 'assets/images/new-arrival/02.webp' %}" width="60" alt="">
             </a>
           </div>
           <div class="">
@@ -286,7 +285,7 @@
         <div class="d-flex align-items-center gap-3">
           <div class="bottom-product-img">
             <a href="product-details.html">
-              <img src="assets/images/new-arrival/03.webp" width="60" alt="">
+              <img src="{% static 'assets/images/new-arrival/03.webp' %}" width="60" alt="">
             </a>
           </div>
           <div class="">
@@ -302,7 +301,7 @@
         <div class="d-flex align-items-center gap-3">
           <div class="bottom-product-img">
             <a href="product-details.html">
-              <img src="assets/images/new-arrival/04.webp" width="60" alt="">
+              <img src="{% static 'assets/images/new-arrival/04.webp' %}" width="60" alt="">
             </a>
           </div>
           <div class="">
@@ -318,7 +317,7 @@
         <div class="d-flex align-items-center gap-3">
           <div class="bottom-product-img">
             <a href="product-details.html">
-              <img src="assets/images/new-arrival/05.webp" width="60" alt="">
+              <img src="{% static 'assets/images/new-arrival/05.webp' %}" width="60" alt="">
             </a>
           </div>
           <div class="">
@@ -334,7 +333,7 @@
         <div class="d-flex align-items-center gap-3">
           <div class="bottom-product-img">
             <a href="product-details.html">
-              <img src="assets/images/new-arrival/06.webp" width="60" alt="">
+              <img src="{% static 'assets/images/new-arrival/06.webp' %}" width="60" alt="">
             </a>
           </div>
           <div class="">
@@ -350,7 +349,7 @@
         <div class="d-flex align-items-center gap-3">
           <div class="bottom-product-img">
             <a href="product-details.html">
-              <img src="assets/images/new-arrival/07.webp" width="60" alt="">
+              <img src="{% static 'assets/images/new-arrival/07.webp' %}" width="60" alt="">
             </a>
           </div>
           <div class="">
@@ -366,7 +365,7 @@
         <div class="d-flex align-items-center gap-3">
           <div class="bottom-product-img">
             <a href="product-details.html">
-              <img src="assets/images/new-arrival/08.webp" width="60" alt="">
+              <img src="{% static 'assets/images/new-arrival/08.webp' %}" width="60" alt="">
             </a>
           </div>
           <div class="">
@@ -382,7 +381,7 @@
         <div class="d-flex align-items-center gap-3">
           <div class="bottom-product-img">
             <a href="product-details.html">
-              <img src="assets/images/new-arrival/09.webp" width="60" alt="">
+              <img src="{% static 'assets/images/new-arrival/09.webp' %}" width="60" alt="">
             </a>
           </div>
           <div class="">
@@ -398,7 +397,7 @@
         <div class="d-flex align-items-center gap-3">
           <div class="bottom-product-img">
             <a href="product-details.html">
-              <img src="assets/images/new-arrival/10.webp" width="60" alt="">
+              <img src="{% static 'assets/images/new-arrival/10.webp' %}" width="60" alt="">
             </a>
           </div>
           <div class="">

@@ -10,8 +10,8 @@
     <div class="container">
       <nav aria-label="breadcrumb">
         <ol class="breadcrumb mb-0"> 
-          <li class="breadcrumb-item"><a href="javascript:;">Home</a></li>
-          <li class="breadcrumb-item"><a href="javascript:;">checkout</a></li>
+          <li class="breadcrumb-item"><a href="{% url 'index' %}">Home</a></li>
+          <li class="breadcrumb-item"><a href="{% url 'account_dashboard' %}">Checkout</a></li>
           <li class="breadcrumb-item active" aria-current="page">Address</li>
         </ol>
       </nav>
@@ -38,10 +38,10 @@
             <div class="address-info form-check flex-grow-1">
               <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" checked="">
               <label class="form-check-label" for="flexRadioDefault1">
-                <span class="fw-bold mb-0 h5">Jhon Maxwell</span><br>
-                47-A, US Road, New York <br>
-                United Kingdom, 201001<br>
-                Mobile: <span class="text-dark fw-bold">+91-xxxxxxxxxx</span>
+                <span class="fw-bold mb-0 h5">Precious Adebiyi</span><br>
+                47-A, obanile street, Yaba<br>
+                Lagos, Nigeria<br>
+                Mobile: <span class="text-dark fw-bold">+234-xxxxxxxxxx</span>
              </label>
             </div>
            <div class="d-none d-xl-block vr"></div>
@@ -60,10 +60,10 @@
             <div class="address-info form-check flex-grow-1">
               <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2">
               <label class="form-check-label" for="flexRadioDefault2">
-                <span class="fw-bold mb-0 h5">Andrew Clark</span><br>
-                85-B, UAE Road, Dubai <br>
-                Saudi Arabia, 201001<br>
-                Mobile: <span class="text-dark fw-bold">+99-xxxxxxxxxx</span>
+                <span class="fw-bold mb-0 h5">Chioma Eze</span><br>
+                85-B, Ngba Uwku way,<br>
+                Awka, Nigeria<br>
+                Mobile: <span class="text-dark fw-bold">+234-xxxxxxxxxx</span>
              </label>
             </div>
            <div class="d-none d-xl-block vr"></div>
@@ -198,7 +198,7 @@
         <div class="d-flex align-items-center gap-3">
           <div class="bottom-product-img">
             <a href="product-details.html">
-              <img src="assets/images/new-arrival/01.webp" width="60" alt="">
+              <img src="{% static 'assets/images/new-arrival/01.webp' %}" width="60" alt="">
             </a>
           </div>
           <div class="">
@@ -214,7 +214,7 @@
         <div class="d-flex align-items-center gap-3">
           <div class="bottom-product-img">
             <a href="product-details.html">
-              <img src="assets/images/new-arrival/02.webp" width="60" alt="">
+              <img src="{% static 'assets/images/new-arrival/02.webp' %}" width="60" alt="">
             </a>
           </div>
           <div class="">
@@ -230,7 +230,7 @@
         <div class="d-flex align-items-center gap-3">
           <div class="bottom-product-img">
             <a href="product-details.html">
-              <img src="assets/images/new-arrival/03.webp" width="60" alt="">
+              <img src="{% static 'assets/images/new-arrival/03.webp' %}" width="60" alt="">
             </a>
           </div>
           <div class="">
@@ -246,7 +246,7 @@
         <div class="d-flex align-items-center gap-3">
           <div class="bottom-product-img">
             <a href="product-details.html">
-              <img src="assets/images/new-arrival/04.webp" width="60" alt="">
+              <img src="{% static 'assets/images/new-arrival/04.webp' %}" width="60" alt="">
             </a>
           </div>
           <div class="">
@@ -262,7 +262,7 @@
         <div class="d-flex align-items-center gap-3">
           <div class="bottom-product-img">
             <a href="product-details.html">
-              <img src="assets/images/new-arrival/05.webp" width="60" alt="">
+              <img src="{% static 'assets/images/new-arrival/05.webp' %}" width="60" alt="">
             </a>
           </div>
           <div class="">
@@ -278,7 +278,7 @@
         <div class="d-flex align-items-center gap-3">
           <div class="bottom-product-img">
             <a href="product-details.html">
-              <img src="assets/images/new-arrival/06.webp" width="60" alt="">
+              <img src="{% static 'assets/images/new-arrival/06.webp' %}" width="60" alt="">
             </a>
           </div>
           <div class="">
@@ -294,7 +294,7 @@
         <div class="d-flex align-items-center gap-3">
           <div class="bottom-product-img">
             <a href="product-details.html">
-              <img src="assets/images/new-arrival/07.webp" width="60" alt="">
+              <img src="{% static 'assets/images/new-arrival/07.webp' %}" width="60" alt="">
             </a>
           </div>
           <div class="">
@@ -310,7 +310,7 @@
         <div class="d-flex align-items-center gap-3">
           <div class="bottom-product-img">
             <a href="product-details.html">
-              <img src="assets/images/new-arrival/08.webp" width="60" alt="">
+              <img src="{% static 'assets/images/new-arrival/08.webp' %}" width="60" alt="">
             </a>
           </div>
           <div class="">
@@ -326,7 +326,7 @@
         <div class="d-flex align-items-center gap-3">
           <div class="bottom-product-img">
             <a href="product-details.html">
-              <img src="assets/images/new-arrival/09.webp" width="60" alt="">
+              <img src="{% static 'assets/images/new-arrival/09.webp' %}" width="60" alt="">
             </a>
           </div>
           <div class="">
@@ -342,7 +342,7 @@
         <div class="d-flex align-items-center gap-3">
           <div class="bottom-product-img">
             <a href="product-details.html">
-              <img src="assets/images/new-arrival/10.webp" width="60" alt="">
+              <img src="{% static 'assets/images/new-arrival/10.webp' %}" width="60" alt="">
             </a>
           </div>
           <div class="">
