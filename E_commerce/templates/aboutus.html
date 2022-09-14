@@ -13,7 +13,7 @@
     <div class="container">
       <nav aria-label="breadcrumb">
         <ol class="breadcrumb mb-0"> 
-          <li class="breadcrumb-item"><a href="javascript:;">Home</a></li>
+          <li class="breadcrumb-item"><a href="{%url 'index' %}">Home</a></li>
           <li class="breadcrumb-item"><a href="javascript:;">Pages</a></li>
           <li class="breadcrumb-item active" aria-current="page">About Us</li>
         </ol>
@@ -34,7 +34,7 @@
 						<p>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College.</p>
           </div>
           <div class="col-12 col-xl-6">
-             <img src="../../../photos/7679877/pexels-photo-7679877.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" class="img-fluid" alt="">     
+             <img src="{% static '../../../photos/7679877/pexels-photo-7679877.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1' %}" class="img-fluid" alt="">     
           </div>
        </div><!--end row-->
 
@@ -42,13 +42,13 @@
         <div class="line"></div>
         <h3 class="mb-0 h3 fw-bold">Why Choose Us</h3>
         <div class="line"></div>
-      </div>
+      </div>J
 
        <div class="row row-cols-1 row-cols-xl-3 g-4 why-choose">
         <div class="col d-flex">
           <div class="card rounded-0 shadow-none w-100">
             <div class="card-body">
-              <img src="assets/images/icons/delivery.webp" width="60" alt="">
+              <img src="{% static 'assets/images/icons/delivery.webp' %}" width="60" alt="">
               <h5 class="my-3 fw-bold">Free Shipping</h5>
               <p class="mb-0">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industr in some form.</p>
             </div>
@@ -57,7 +57,7 @@
         <div class="col d-flex">
           <div class="card rounded-0 shadow-none w-100">
             <div class="card-body">
-              <img src="assets/images/icons/money-bag.webp" width="60" alt="">
+              <img src="{% static 'assets/images/icons/money-bag.webp' %}" width="60" alt="">
               <h5 class="my-3 fw-bold">100% Back Gaurantee</h5>
               <p class="mb-0">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industr in some form.</p>
             </div>
@@ -66,7 +66,7 @@
         <div class="col d-flex">
           <div class="card rounded-0 shadow-none w-100">
             <div class="card-body">
-              <img src="assets/images/icons/support.webp" width="60" alt="">
+              <img src="{% static 'assets/images/icons/support.webp' %}" width="60" alt="">
               <h5 class="my-3 fw-bold">Online Support 24/7</h5>
               <p class="mb-0">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industr in some form.</p>
             </div>
@@ -86,7 +86,7 @@
             <div class="p-3 border rounded brand-box">
               <div class="d-flex align-items-center">
                 <a href="javascript:;">
-                  <img src="assets/images/brands/01.webp" class="img-fluid" alt="">
+                  <img src="{% static 'assets/images/brands/01.webp' %}" class="img-fluid" alt="">
                 </a>
               </div>
             </div>
@@ -95,7 +95,7 @@
             <div class="p-3 border rounded brand-box">
               <div class="d-flex align-items-center">
                 <a href="javascript:;">
-                  <img src="assets/images/brands/02.webp" class="img-fluid" alt="">
+                  <img src="{% static 'assets/images/brands/02.webp' %}" class="img-fluid" alt="">
                 </a>
               </div>
             </div>
@@ -104,7 +104,7 @@
             <div class="p-3 border rounded brand-box">
               <div class="d-flex align-items-center">
                 <a href="javascript:;">
-                  <img src="assets/images/brands/03.webp" class="img-fluid" alt="">
+                  <img src="{% static 'assets/images/brands/03.webp' %}" class="img-fluid" alt="">
                 </a>
               </div>
             </div>
@@ -113,7 +113,7 @@
             <div class="p-3 border rounded brand-box">
               <div class="d-flex align-items-center">
                 <a href="javascript:;">
-                  <img src="assets/images/brands/04.webp" class="img-fluid" alt="">
+                  <img src="{% static 'assets/images/brands/04.webp' %}" class="img-fluid" alt="">
                 </a>
               </div>
             </div>
@@ -122,7 +122,7 @@
             <div class="p-3 border rounded brand-box">
               <div class="d-flex align-items-center">
                 <a href="javascript:;">
-                  <img src="assets/images/brands/05.webp" class="img-fluid" alt="">
+                  <img src="{% static 'assets/images/brands/05.webp' %}" class="img-fluid" alt="">
                 </a>
               </div>
             </div>
@@ -131,7 +131,7 @@
             <div class="p-3 border rounded brand-box">
               <div class="d-flex align-items-center">
                 <a href="javascript:;">
-                  <img src="assets/images/brands/06.webp" class="img-fluid" alt="">
+                  <img src="{% static 'assets/images/brands/06.webp' %}" class="img-fluid" alt="">
                 </a>
               </div>
             </div>
@@ -140,7 +140,7 @@
             <div class="p-3 border rounded brand-box">
               <div class="d-flex align-items-center">
                 <a href="javascript:;">
-                  <img src="assets/images/brands/07.webp" class="img-fluid" alt="">
+                  <img src="{% static 'assets/images/brands/07.webp' %}" class="img-fluid" alt="">
                 </a>
               </div>
             </div>
@@ -149,7 +149,7 @@
             <div class="p-3 border rounded brand-box">
               <div class="d-flex align-items-center">
                 <a href="javascript:;">
-                  <img src="assets/images/brands/08.webp" class="img-fluid" alt="">
+                  <img src="{% static 'assets/images/brands/08.webp' %}" class="img-fluid" alt="">
                 </a>
               </div>
             </div>
@@ -158,7 +158,7 @@
             <div class="p-3 border rounded brand-box">
               <div class="d-flex align-items-center">
                 <a href="javascript:;">
-                  <img src="assets/images/brands/09.webp" class="img-fluid" alt="">
+                  <img src="{% static 'assets/images/brands/09.webp' %}" class="img-fluid" alt="">
                 </a>
               </div>
             </div>
@@ -167,7 +167,7 @@
             <div class="p-3 border rounded brand-box">
               <div class="d-flex align-items-center">
                 <a href="javascript:;">
-                  <img src="assets/images/brands/10.webp" class="img-fluid" alt="">
+                  <img src="{% static 'assets/images/brands/10.webp' %}" class="img-fluid" alt="">
                 </a>
               </div>
             </div>
@@ -190,7 +190,7 @@
        <div class="row row-cols-1 row-cols-lg-4 g-4">
         <div class="col">
           <div class="footer-widget-6">
-            <img src="assets/images/logo1.png" class="logo-img mb-3" alt="">
+            <img src="{% static 'assets/images/logo1.png' %}" class="logo-img mb-6" alt="3" alt="">
             <h5 class="mb-3 fw-bold">About Us</h5>
              <p class="mb-2">There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable.</p>
 
@@ -256,7 +256,7 @@
         <div class="d-flex align-items-center gap-3">
           <div class="bottom-product-img">
             <a href="product-details.html">
-              <img src="assets/images/new-arrival/01.webp" width="60" alt="">
+              <img src="{% static 'assets/images/new-arrival/01.webp' %}" width="60" alt="">
             </a>
           </div>
           <div class="">
@@ -272,7 +272,7 @@
         <div class="d-flex align-items-center gap-3">
           <div class="bottom-product-img">
             <a href="product-details.html">
-              <img src="assets/images/new-arrival/02.webp" width="60" alt="">
+              <img src="{% static 'assets/images/new-arrival/02.webp' %}" width="60" alt="">
             </a>
           </div>
           <div class="">
@@ -288,7 +288,7 @@
         <div class="d-flex align-items-center gap-3">
           <div class="bottom-product-img">
             <a href="product-details.html">
-              <img src="assets/images/new-arrival/03.webp" width="60" alt="">
+              <img src="{% static 'assets/images/new-arrival/03.webp' %}" width="60" alt="">
             </a>
           </div>
           <div class="">
@@ -304,7 +304,7 @@
         <div class="d-flex align-items-center gap-3">
           <div class="bottom-product-img">
             <a href="product-details.html">
-              <img src="assets/images/new-arrival/04.webp" width="60" alt="">
+              <img src="{% static 'assets/images/new-arrival/04.webp' %}" width="60" alt="">
             </a>
           </div>
           <div class="">
@@ -320,7 +320,7 @@
         <div class="d-flex align-items-center gap-3">
           <div class="bottom-product-img">
             <a href="product-details.html">
-              <img src="assets/images/new-arrival/05.webp" width="60" alt="">
+              <img src="{% static 'assets/images/new-arrival/05.webp' %}" width="60" alt="">
             </a>
           </div>
           <div class="">
@@ -336,7 +336,7 @@
         <div class="d-flex align-items-center gap-3">
           <div class="bottom-product-img">
             <a href="product-details.html">
-              <img src="assets/images/new-arrival/06.webp" width="60" alt="">
+              <img src="{%s tatic 'assets/images/new-arrival/06.webp' %}" width="60" alt="">
             </a>
           </div>
           <div class="">
@@ -352,7 +352,7 @@
         <div class="d-flex align-items-center gap-3">
           <div class="bottom-product-img">
             <a href="product-details.html">
-              <img src="assets/images/new-arrival/07.webp" width="60" alt="">
+              <img src="{% static 'assets/images/new-arrival/07.webp' %}" width="60" alt="">
             </a>
           </div>
           <div class="">
@@ -368,7 +368,7 @@
         <div class="d-flex align-items-center gap-3">
           <div class="bottom-product-img">
             <a href="product-details.html">
-              <img src="assets/images/new-arrival/08.webp" width="60" alt="">
+              <img src="{% static 'assets/images/new-arrival/08.webp' %}" width="60" alt="">
             </a>
           </div>
           <div class="">
@@ -384,7 +384,7 @@
         <div class="d-flex align-items-center gap-3">
           <div class="bottom-product-img">
             <a href="product-details.html">
-              <img src="assets/images/new-arrival/09.webp" width="60" alt="">
+              <img src="{% static 'ssets/images/new-arrival/09.webp' %}" width="60" alt="">
             </a>
           </div>
           <div class="">
@@ -400,7 +400,7 @@
         <div class="d-flex align-items-center gap-3">
           <div class="bottom-product-img">
             <a href="product-details.html">
-              <img src="assets/images/new-arrival/10.webp" width="60" alt="">
+              <img src="{% static 'assets/images/new-arrival/10.webp' %}" width="60" alt="">
             </a>
           </div>
           <div class="">
