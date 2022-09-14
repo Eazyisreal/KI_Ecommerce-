@@ -1,4 +1,4 @@
-from account.models import MyUser
+from accs.models import MyUser
 from django.contrib.auth.forms import UserCreationForm
 
 class MyUserForm(UserCreationForm):

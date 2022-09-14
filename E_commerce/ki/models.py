@@ -1,5 +1,5 @@
 from django.db import models
-from account.models import MyUser
+from accs.models import MyUser
 from phonenumber_field.modelfields import PhoneNumberField
 
     

@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from account.forms import MyUserForm
+from accs.forms import MyUserForm
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
 
@@ -32,7 +32,7 @@ def authentication_login(request):
             return redirect("/")
         else:
             messages.info(request, "invalid input. Input the correct information")
-            return redirect('authetication_login')
+            return redirect('authentication_login')
     return render(request, "authentication_login.html", {})
 
 

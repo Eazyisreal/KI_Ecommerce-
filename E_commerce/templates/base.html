@@ -178,9 +178,15 @@
             <i class="bi bi-basket2"></i>
           </a>
         </li>
+        {% if user.is_authenticated %}
+          <li class="nav-item">
+            <a class="nav-link" href="{%url 'account_dashboard'%}"><i class="bi bi-person-circle"></i></a>
+          </li>
+        {% else %}
         <li class="nav-item">
-          <a class="nav-link" href="{%url 'account_dashboard'%}"><i class="bi bi-person-circle"></i></a>
+          <a class="nav-link btn btn-outline-info btn-sm" href="{%url 'authentication_login' %}">Login</a>
         </li>
+        {% endif %}
       </ul>
     </nav>
   </header>

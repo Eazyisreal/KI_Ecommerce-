@@ -1,8 +1,11 @@
 ﻿{% extends 'base.html' %}
 {% load static %}
   <!--end top header-->
+{% load socialaccount %}
+{% providers_media_js %}
+{% comment %} {% providers_media_js %} {% endcomment %}
 
-{% block content %}
+{% block content%}
 <!--start page content-->
 <div class="page-content">
 
@@ -36,7 +39,7 @@
                  <div class="social-login mb-4">
                   <div class="row g-4">
                     <div class="col-xl-6 mx-auto">
-                      <button type="button" class="btn bg-pinterest btn-ecomm w-100 text-white"><i class="bi bi-google me-2"></i>Google</button>
+                      <a href="{% provider_login_url 'google' %}" type="button" class="btn bg-pinterest btn-ecomm w-100 text-white"><i class="bi bi-google me-2"></i>Google</a>
                   </div>
                    </div>
                  </div>
