@@ -46,28 +46,29 @@
       <div class="row g-4">
         <div class="col-xl-8">
           <div class="p-4 border">
-            <form>
+            <form action="" method="POST">
+              {% csrf_token %}
               <div class="form-body">
                 <h4 class="mb-0 fw-bold">Drop Us a Line</h4>
                 <div class="my-3 border-bottom"></div>
                 <div class="mb-3">
                   <label class="form-label">Enter Your Name</label>
-                  <input type="text" class="form-control rounded-0">
+                  <input name="name" type="text" class="form-control rounded-0">
                 </div>
                 <div class="mb-3">
                   <label class="form-label">Enter Email</label>
-                  <input type="text" class="form-control rounded-0">
+                  <input type="text" name="email" class="form-control rounded-0">
                 </div>
                 <div class="mb-3">
                   <label class="form-label">Phone Number</label>
-                  <input type="text" class="form-control rounded-0">
+                  <input type="text" name="phone_number" class="form-control rounded-0">
                 </div>
                 <div class="mb-3">
                   <label class="form-label">Message</label>
-                  <textarea class="form-control rounded-0" rows="4" cols="4"></textarea>
+                  <textarea class="form-control rounded-0" name="message" rows="4" cols="4"></textarea>
                 </div>
                 <div class="mb-0">
-                  <a href="thank-you.html" class="btn btn-dark btn-ecomm">Send Message</a>
+                  <button type="submit" class="btn btn-dark btn-ecomm">Send Message</button>
                 </div>
               </div>
             </form>

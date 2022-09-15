@@ -4,15 +4,15 @@ from phonenumber_field.modelfields import PhoneNumberField
 
     
 class Profile(models.Model):
-    user = models.ForeignKey(MyUser, on_delete=models.CASCADE)
+    user = models.OneToOneField(MyUser, on_delete=models.CASCADE)
     name = models.CharField(max_length=100)
     location = models.CharField(max_length=100, blank=True)
     phone_number = PhoneNumberField(blank=True, verbose_name="Phone number(+234.....)")
     date_of_birth = models.DateField(blank=True)
-    user_image = models.ImageField(upload_to="user_image", blank=True)
+    user_image = models.ImageField(upload_to="user_image", blank=True, null=True)
 
     def __str__(self):
-        return self.user
+        return self.user.email
 
 class Category(models.Model):
     category = models.CharField(max_length=100)
@@ -35,3 +35,12 @@ class Order(models.Model):
 
     def __str__(self):
         return self.products.name
+
+class Contact(models.Model):
+    name = models.CharField(max_length=100)
+    email = models.EmailField(max_length=100)
+    phone_number = models.CharField(max_length=100)
+    message = models.TextField()
+
+    def __str__(self):
+        return self.name
