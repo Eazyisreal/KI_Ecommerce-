@@ -1,4 +1,6 @@
-﻿{% load static %}
+﻿{% extends 'base.html' %}
+{% load static %}
+{% block content %}
 <!doctype html>
 <html lang="en"> 
 
@@ -10,7 +12,7 @@
 	<link rel="icon" href="{%static 'assets/images/logo1.webp' %}" type="image/webp">
 
   <!-- CSS files -->
-  <link href="assets/css/bootstrap.min.css" rel="stylesheet">
+  <link href="{% static 'assets/css/bootstrap.min.css' %}" rel="stylesheet">
   <link href="../../../css2?family=Raleway:wght@500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../../../npm/bootstrap-icons%401.7.2/font/bootstrap-icons.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
@@ -201,3 +203,4 @@
 </body>
 
 </html>
+{% endblock %}
