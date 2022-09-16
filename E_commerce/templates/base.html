@@ -36,13 +36,13 @@
  <!--start top header-->
   <header class="top-header">
     <nav class="navbar navbar-expand-xl w-100 navbar-dark container gap-3">
-      <a class="navbar-brand d-none d-xl-inline" href="index.html"><img src="{% static 'assets/images/logo1.webp' %}" class="logo-img" alt=""></a>
+      <a class="navbar-brand d-none d-xl-inline" href="{%url 'index' %}"><img src="{% static 'assets/images/logo1.webp' %}" class="logo-img" alt=""></a>
       <a class="mobile-menu-btn d-inline d-xl-none" href="javascript:;" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar">
         <i class="bi bi-list"></i>
       </a>
       <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasNavbar">
         <div class="offcanvas-header">
-          <div class="offcanvas-logo"><img src="{% static 'assets/images/logo1.png' %}" class="logo-img" alt="">
+          <div class="offcanvas-logo"><a href="{%url 'index' %}"><img src="{% static 'assets/images/logo1.png' %}" class="logo-img" alt=""></a>
           </div>
           <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
         </div>
@@ -140,8 +140,13 @@
               <ul class="dropdown-menu">
                 <li><a class="dropdown-item" href="{%url 'account_dashboard' %}">Dashboard</a></li>
                 <li><a class="dropdown-item" href="{%url 'account_orders' %}">My Orders</a></li>
-                <li><a class="dropdown-item" href="{%url 'account_profile'%}">My Profile</a></li>
-                <li><a class="dropdown-item" href="{%url 'account_edit'%}">Edit Profile</a></li>
+                {% if  user.profile.pk %}
+                  <li><a class="dropdown-item" href="{%url 'account_profile'%}">My Profile</a></li>
+                  <li><a class="dropdown-item" href="{%url 'account_edit' user.profile.pk%}">Edit Profile</a></li>
+                {% endif %}
+                {%if user.is_authenticated and not user.profile.pk %}
+                  <li><a class="dropdown-item" href="{%url 'create_profile'%}">Create Profile</a></li>
+                {% endif %}
                 <li><a class="dropdown-item" href="{%url 'address' %}">Addresses</a></li>
                 <li>
                   <hr class="dropdown-divider">
@@ -183,8 +188,8 @@
             <a class="nav-link" href="{%url 'account_dashboard'%}"><i class="bi bi-person-circle"></i></a>
           </li>
         {% else %}
-        <li class="nav-item">
-          <a class="nav-link btn btn-outline-info btn-sm" href="{%url 'authentication_login' %}">Login</a>
+        <li class="nav-item ml-3 btn-xs">
+          <a class="nav-link btn btn-outline-info buttons " href="{%url 'authentication_login' %}">Login</a>
         </li>
         {% endif %}
       </ul>

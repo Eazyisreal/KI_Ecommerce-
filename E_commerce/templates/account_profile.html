@@ -40,8 +40,13 @@
                 <div class="list-group w-100 rounded-0">
                   <a href="{%url 'account_dashboard' %}" class="list-group-item"><i class="bi bi-house-door me-2"></i>Dashboard</a>
                   <a href="{% url 'account_orders' %}" class="list-group-item"><i class="bi bi-basket3 me-2"></i>Orders</a>
-                  <a href="{%url 'account_profile' %}" class="list-group-item active"><i class="bi bi-person me-2"></i>Profile</a>
-                  <a href="{%url 'account_edit'%}" class="list-group-item"><i class="bi bi-pencil me-2"></i>Edit Profile</a>
+                  {% if  user.profile.pk %}
+                  <a class="list-group-item" href="{%url 'account_profile'%}"><i class="bi bi-person me-2"></i>Profile</a>
+                  <a class="list-group-item" href="{%url 'account_edit' user.profile.pk%}"><i class="bi bi-pencil me-2"></i>Edit Profile</a>
+                {% endif %}
+                {%if user.is_authenticated and not user.profile.pk %}
+                  <a class="list-group-item" href="{%url 'create_profile'%}"><i class="bi bi-pencil me-2"></i>Create Profile</a>
+                {% endif %}
                   <a href="{%url 'wishlist' %}" class="list-group-item"><i class="bi bi-suit-heart me-2"></i>Wishlist</a>
                   <a href="{%url 'logout_user' %}" class="list-group-item"><i class="bi bi-power me-2"></i>Logout</a>
                 </div>
@@ -49,6 +54,7 @@
             </div>
         </nav>
       </div>
+          {% if profile.user.pk %}
           <div class="col-12 col-xl-9">
             <div class="card rounded-0">
               <div class="card-body p-lg-5">
@@ -59,33 +65,36 @@
                       <tbody>
                         <tr>
                           <td>Full Name</td>
-                          <td>John Doe</td>
+                          <td>{{profile.name}}</td>
                         </tr>
                         <tr>
                           <td>Email</td>
-                          <td>name@example.com</td>
+                          <td>{{profile.user.email}}</td>
                         </tr>
                         <tr>
                           <td>Location</td>
-                          <td>Nigeria</td>
+                          <td>{{profile.location}}</td>
                         </tr>
                         <tr>
                           <td>Phone</td>
-                          <td>+234-85XXXXXXXX</td>
+                          <td>{{profile.phone_number}}</td>
                         </tr>
                         <tr>
                           <td>DOB</td>
-                          <td>10/03/1993</td>
+                          <td>{{profile.date_of_birth}}</td>
                         </tr>
                       </tbody>
                     </table>
                   </div>
                   <div class="">
-                      <button type="button" class="btn btn-outline-dark btn-ecomm px-5"><i class="bi bi-pencil me-2"></i>Edit</button>
-                  </div>
+                      <a href="{%url 'account_edit' user.profile.pk%}" type="button" class="btn btn-outline-dark btn-ecomm px-5"><i class="bi bi-pencil me-2"></i>Edit</a>
+                    </div>
               </div>
             </div>
           </div>
+         {% else %}
+          <h2>No profile</h2>
+        {% endif %} 
        </div><!--end row-->
     </div>
   </section>
