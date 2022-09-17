@@ -1,4 +1,7 @@
-﻿<!doctype html>
+﻿{% extends 'base.html' %}
+{%load static %}
+{% block content %}
+<!doctype html>
 <html lang="en">
 
 <head>
@@ -9,16 +12,16 @@
 	<link rel="icon" href="assets/images/logo1.webp" type="image/webp">
 
   <!-- CSS files -->
-  <link href="assets/css/bootstrap.min.css" rel="stylesheet">
+  <link href="{% static 'assets/css/bootstrap.min.css' %}" rel="stylesheet">
   <link href="../../../css2?family=Raleway:wght@500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../../../npm/bootstrap-icons%401.7.2/font/bootstrap-icons.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
   <!-- Plugins -->
-  <link rel="stylesheet" type="text/css" href="assets/plugins/slick/slick.css">
-  <link rel="stylesheet" type="text/css" href="assets/plugins/slick/slick-theme.css">
+  <link rel="stylesheet" type="text/css" href="{% static 'assets/plugins/slick/slick.css' %}">
+  <link rel="stylesheet" type="text/css" href="{% static 'assets/plugins/slick/slick-theme.css' %}">
 
-  <link href="assets/css/style.css" rel="stylesheet">
-  <link href="assets/css/dark-theme.css" rel="stylesheet">
+  <link href="{% static 'assets/css/style.css' %}" rel="stylesheet">
+  <link href="{% static 'assets/css/dark-theme.css' %}" rel="stylesheet">
 
   <title>KassyandI</title>
 </head>
@@ -36,22 +39,30 @@
 <!--end loader-->
 
   <!--start top header-->
+  <div class="loader-wrapper">
+    <div class="d-flex justify-content-center align-items-center position-absolute top-50 start-50 translate-middle">
+      <div class="spinner-border text-dark" role="status">
+        <span class="visually-hidden">Loading...</span>
+      </div>
+    </div>
+  </div>
+ <!--start top header-->
   <header class="top-header">
     <nav class="navbar navbar-expand-xl w-100 navbar-dark container gap-3">
-      <a class="navbar-brand d-none d-xl-inline" href="index.html"><img src="assets/images/logo1.webp" class="logo-img" alt=""></a>
+      <a class="navbar-brand d-none d-xl-inline" href="{%url 'index' %}"><img src="{% static 'assets/images/logo1.webp' %}" class="logo-img" alt=""></a>
       <a class="mobile-menu-btn d-inline d-xl-none" href="javascript:;" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar">
         <i class="bi bi-list"></i>
       </a>
       <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasNavbar">
         <div class="offcanvas-header">
-          <div class="offcanvas-logo"><img src="assets/images/logo.webp" class="logo-img" alt="">
+          <div class="offcanvas-logo"><a href="{%url 'index' %}"><img src="{% static 'assets/images/logo1.png' %}" class="logo-img" alt=""></a>
           </div>
           <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
         </div>
         <div class="offcanvas-body primary-menu">
           <ul class="navbar-nav justify-content-start flex-grow-1 gap-1">
             <li class="nav-item">
-              <a class="nav-link" href="index.html">Home</a>
+              <a class="nav-link" href="{%url 'index' %}">Home</a>
             </li>
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle dropdown-toggle-nocaret" href="tv-shows.html" data-bs-toggle="dropdown">
@@ -105,7 +116,7 @@
                   <!-- end col-3 -->
                   <div class="col-12 col-xl-4 d-none d-xl-block">
                     <div class="pramotion-banner1">
-                      <img src="assets/images/menu-img.webp" class="img-fluid" alt="">
+                      <img src="{%static 'assets/images/menu-img.webp' %}" class="img-fluid" alt="">
                     </div>
                   </div>
                   <!-- end col-3 -->
@@ -118,38 +129,48 @@
                 Shop
               </a>
               <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="cart.html">Shop Cart</a></li>
-                <li><a class="dropdown-item" href="wishlist.html">Wishlist</a></li>
-                <li><a class="dropdown-item" href="product-details.html">Product Details</a></li>
-                <li><a class="dropdown-item" href="payment-method.html">Payment Method</a></li>
-                <li><a class="dropdown-item" href="billing-details.html">Billing Details</a></li>
-                <li><a class="dropdown-item" href="address.html">Addresses</a></li>
-                <li><a class="dropdown-item" href="shop-grid.html">Shop Grid</a></li>
-                <li><a class="dropdown-item" href="shop-grid-type-4.html">Shop Grid 4</a></li>
-                <li><a class="dropdown-item" href="shop-grid-type-5.html">Shop Grid 5</a></li>
-                <li><a class="dropdown-item" href="search.html">Search</a></li>
+                <li><a class="dropdown-item" href="{%url 'cart' %}">Shop Cart</a></li>
+                <li><a class="dropdown-item" href="{%url 'wishlist' %}">Wishlist</a></li>
+                <li><a class="dropdown-item" href="{%url 'payment_method' %}">Payment Method</a></li>
+                <li><a class="dropdown-item" href="{%url 'billing_details' %}">Billing Details</a></li>
+                <li><a class="dropdown-item" href="{%url 'address' %}">Addresses</a></li>
+                <li><a class="dropdown-item" href="{%url 'shop_grid' %}">Shop Grid</a></li>
+                <li><a class="dropdown-item" href="{%url 'shop_grid_type_4' %}">Shop Grid 4</a></li>
+                <li><a class="dropdown-item" href="{%url 'shop_grid_type_5'%}">Shop Grid 5</a></li>
+                <li><a class="dropdown-item" href="{%url 'search' %}">Search</a></li>
               </ul>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="about-us.html">About</a>
+              <a class="nav-link" href="{%url 'aboutus' %}">About</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="contact-us.html">Contact</a>
+              <a class="nav-link" href="{%url 'contact_us' %}">Contact</a>
             </li>
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle dropdown-toggle-nocaret" href="javascript:;" data-bs-toggle="dropdown">
                 Account
               </a>
               <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="account-dashboard.html">Dashboard</a></li>
-                <li><a class="dropdown-item" href="account-orders.html">My Orders</a></li>
-                <li><a class="dropdown-item" href="account-profile.html">My Profile</a></li>
-                <li><a class="dropdown-item" href="account-edit-profile.html">Edit Profile</a></li>
-                <li><a class="dropdown-item" href="account-saved-address.html">Addresses</a></li>
-                <li><hr class="dropdown-divider"></li>
-                <li><a class="dropdown-item" href="authentication-login.html">Login</a></li>
-                <li><a class="dropdown-item" href="authentication-register.html">Register</a></li>
-                <li><a class="dropdown-item" href="authentication-reset-password.html">Password</a></li>
+                <li><a class="dropdown-item" href="{%url 'account_dashboard' %}">Dashboard</a></li>
+                <li><a class="dropdown-item" href="{%url 'account_orders' %}">My Orders</a></li>
+                {% if  user.profile.pk %}
+                  <li><a class="dropdown-item" href="{%url 'account_profile'%}">My Profile</a></li>
+                  <li><a class="dropdown-item" href="{%url 'account_edit' user.profile.pk%}">Edit Profile</a></li>
+                {% endif %}
+                {%if user.is_authenticated and not user.profile.pk %}
+                  <li><a class="dropdown-item" href="{%url 'create_profile'%}">Create Profile</a></li>
+                {% endif %}
+                <li><a class="dropdown-item" href="{%url 'address' %}">Addresses</a></li>
+                <li>
+                  <hr class="dropdown-divider">
+                </li>
+                {% if user.is_authenticated %}
+                <li><a class="dropdown-item" href="{%url 'logout_user' %}">Logout</a></li>
+                {% else %}
+                <li><a class="dropdown-item" href="{%url 'authentication_login' %}">Login</a></li>
+                <li><a class="dropdown-item" href="{%url 'signup_user' %}">Register</a></li>
+                {% endif %}
+                <li><a class="dropdown-item" href="{%url 'authentication_reset_password'%}">Password</a></li>
               </ul>
             </li>
           </ul>
@@ -164,10 +185,10 @@
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="search.html"><i class="bi bi-search"></i></a>
+          <a class="nav-link" href="{%url 'search' %}"><i class="bi bi-search"></i></a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="wishlist.html"><i class="bi bi-suit-heart"></i></a>
+          <a class="nav-link" href="{%url 'wishlist' %}"><i class="bi bi-suit-heart"></i></a>
         </li>
         <li class="nav-item" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight">
           <a class="nav-link position-relative" href="javascript:;">
@@ -175,9 +196,15 @@
             <i class="bi bi-basket2"></i>
           </a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="account-dashboard.html"><i class="bi bi-person-circle"></i></a>
+        {% if user.is_authenticated %}
+          <li class="nav-item">
+            <a class="nav-link" href="{%url 'account_dashboard'%}"><i class="bi bi-person-circle"></i></a>
+          </li>
+        {% else %}
+        <li class="nav-item ml-3 btn-xs">
+          <a class="nav-link btn btn-outline-info buttons " href="{%url 'authentication_login' %}">Login</a>
         </li>
+        {% endif %}
       </ul>
     </nav>
   </header>
@@ -415,7 +442,7 @@
         <div class="d-flex align-items-center gap-3">
           <div class="bottom-product-img">
             <a href="product-details.html">
-              <img src="assets/images/new-arrival/01.webp" width="60" alt="">
+              <img src="{% static 'assets/images/new-arrival/01.webp' %}" width="60" alt="">
             </a>
           </div>
           <div class="">
@@ -431,7 +458,7 @@
         <div class="d-flex align-items-center gap-3">
           <div class="bottom-product-img">
             <a href="product-details.html">
-              <img src="assets/images/new-arrival/02.webp" width="60" alt="">
+              <img src="{% static 'assets/images/new-arrival/02.webp' %}" width="60" alt="">
             </a>
           </div>
           <div class="">
@@ -447,7 +474,7 @@
         <div class="d-flex align-items-center gap-3">
           <div class="bottom-product-img">
             <a href="product-details.html">
-              <img src="assets/images/new-arrival/03.webp" width="60" alt="">
+              <img src="{% static 'assets/images/new-arrival/03.webp' %}" width="60" alt="">
             </a>
           </div>
           <div class="">
@@ -463,7 +490,7 @@
         <div class="d-flex align-items-center gap-3">
           <div class="bottom-product-img">
             <a href="product-details.html">
-              <img src="assets/images/new-arrival/04.webp" width="60" alt="">
+              <img src="{% static 'assets/images/new-arrival/04.webp' %}" width="60" alt="">
             </a>
           </div>
           <div class="">
@@ -479,7 +506,7 @@
         <div class="d-flex align-items-center gap-3">
           <div class="bottom-product-img">
             <a href="product-details.html">
-              <img src="assets/images/new-arrival/05.webp" width="60" alt="">
+              <img src="{% static 'assets/images/new-arrival/05.webp' %}" width="60" alt="">
             </a>
           </div>
           <div class="">
@@ -495,7 +522,7 @@
         <div class="d-flex align-items-center gap-3">
           <div class="bottom-product-img">
             <a href="product-details.html">
-              <img src="assets/images/new-arrival/06.webp" width="60" alt="">
+              <img src="{% static 'assets/images/new-arrival/06.webp' %}" width="60" alt="">
             </a>
           </div>
           <div class="">
@@ -511,7 +538,7 @@
         <div class="d-flex align-items-center gap-3">
           <div class="bottom-product-img">
             <a href="product-details.html">
-              <img src="assets/images/new-arrival/07.webp" width="60" alt="">
+              <img src="{% static 'assets/images/new-arrival/07.webp' %}" width="60" alt="">
             </a>
           </div>
           <div class="">
@@ -527,7 +554,7 @@
         <div class="d-flex align-items-center gap-3">
           <div class="bottom-product-img">
             <a href="product-details.html">
-              <img src="assets/images/new-arrival/08.webp" width="60" alt="">
+              <img src="{% static 'assets/images/new-arrival/08.webp' %}" width="60" alt="">
             </a>
           </div>
           <div class="">
@@ -543,7 +570,7 @@
         <div class="d-flex align-items-center gap-3">
           <div class="bottom-product-img">
             <a href="product-details.html">
-              <img src="assets/images/new-arrival/09.webp" width="60" alt="">
+              <img src="{% static 'assets/images/new-arrival/09.webp' %}" width="60" alt="">
             </a>
           </div>
           <div class="">
@@ -559,7 +586,7 @@
         <div class="d-flex align-items-center gap-3">
           <div class="bottom-product-img">
             <a href="product-details.html">
-              <img src="assets/images/new-arrival/10.webp" width="60" alt="">
+              <img src="{% static 'assets/images/new-arrival/10.webp' %}" width="60" alt="">
             </a>
           </div>
           <div class="">
@@ -599,3 +626,4 @@
 </body>
 
 </html>
+{% endblock %}

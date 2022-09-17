@@ -9,7 +9,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <!--favicon-->
-	<link rel="icon" href="{% static 'assets/images/logo1.webp' %}" type="image/webp">
+	<link rel="icon" href="assets/images/logo1.webp" type="image/webp">
 
   <!-- CSS files -->
   <link href="{% static 'assets/css/bootstrap.min.css' %}" rel="stylesheet">
@@ -39,30 +39,22 @@
 <!--end loader-->
 
   <!--start top header-->
-  <div class="loader-wrapper">
-    <div class="d-flex justify-content-center align-items-center position-absolute top-50 start-50 translate-middle">
-      <div class="spinner-border text-dark" role="status">
-        <span class="visually-hidden">Loading...</span>
-      </div>
-    </div>
-  </div>
- <!--start top header-->
   <header class="top-header">
     <nav class="navbar navbar-expand-xl w-100 navbar-dark container gap-3">
-      <a class="navbar-brand d-none d-xl-inline" href="{%url 'index' %}"><img src="{% static 'assets/images/logo1.webp' %}" class="logo-img" alt=""></a>
+      <a class="navbar-brand d-none d-xl-inline" href="index.html"><img src="assets/images/logo1.webp" class="logo-img" alt=""></a>
       <a class="mobile-menu-btn d-inline d-xl-none" href="javascript:;" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar">
         <i class="bi bi-list"></i>
       </a>
       <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasNavbar">
         <div class="offcanvas-header">
-          <div class="offcanvas-logo"><a href="{%url 'index' %}"><img src="{% static 'assets/images/logo1.png' %}" class="logo-img" alt=""></a>
+          <div class="offcanvas-logo"><img src="assets/images/logo.webp" class="logo-img" alt="">
           </div>
           <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
         </div>
         <div class="offcanvas-body primary-menu">
           <ul class="navbar-nav justify-content-start flex-grow-1 gap-1">
             <li class="nav-item">
-              <a class="nav-link" href="{%url 'index' %}">Home</a>
+              <a class="nav-link" href="index.html">Home</a>
             </li>
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle dropdown-toggle-nocaret" href="tv-shows.html" data-bs-toggle="dropdown">
@@ -116,7 +108,7 @@
                   <!-- end col-3 -->
                   <div class="col-12 col-xl-4 d-none d-xl-block">
                     <div class="pramotion-banner1">
-                      <img src="{%static 'assets/images/menu-img.webp' %}" class="img-fluid" alt="">
+                      <img src="assets/images/menu-img.webp" class="img-fluid" alt="">
                     </div>
                   </div>
                   <!-- end col-3 -->
@@ -129,48 +121,38 @@
                 Shop
               </a>
               <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="{%url 'cart' %}">Shop Cart</a></li>
-                <li><a class="dropdown-item" href="{%url 'wishlist' %}">Wishlist</a></li>
-                <li><a class="dropdown-item" href="{%url 'payment_method' %}">Payment Method</a></li>
-                <li><a class="dropdown-item" href="{%url 'billing_details' %}">Billing Details</a></li>
-                <li><a class="dropdown-item" href="{%url 'address' %}">Addresses</a></li>
-                <li><a class="dropdown-item" href="{%url 'shop_grid' %}">Shop Grid</a></li>
-                <li><a class="dropdown-item" href="{%url 'shop_grid_type_4' %}">Shop Grid 4</a></li>
-                <li><a class="dropdown-item" href="{%url 'shop_grid_type_5'%}">Shop Grid 5</a></li>
-                <li><a class="dropdown-item" href="{%url 'search' %}">Search</a></li>
+                <li><a class="dropdown-item" href="cart.html">Shop Cart</a></li>
+                <li><a class="dropdown-item" href="wishlist.html">Wishlist</a></li>
+                <li><a class="dropdown-item" href="product-details.html">Product Details</a></li>
+                <li><a class="dropdown-item" href="payment-method.html">Payment Method</a></li>
+                <li><a class="dropdown-item" href="billing-details.html">Billing Details</a></li>
+                <li><a class="dropdown-item" href="address.html">Addresses</a></li>
+                <li><a class="dropdown-item" href="shop-grid.html">Shop Grid</a></li>
+                <li><a class="dropdown-item" href="shop-grid-type-4.html">Shop Grid 4</a></li>
+                <li><a class="dropdown-item" href="shop-grid-type-5.html">Shop Grid 5</a></li>
+                <li><a class="dropdown-item" href="search.html">Search</a></li>
               </ul>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="{%url 'aboutus' %}">About</a>
+              <a class="nav-link" href="about-us.html">About</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="{%url 'contact_us' %}">Contact</a>
+              <a class="nav-link" href="contact-us.html">Contact</a>
             </li>
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle dropdown-toggle-nocaret" href="javascript:;" data-bs-toggle="dropdown">
                 Account
               </a>
               <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="{%url 'account_dashboard' %}">Dashboard</a></li>
-                <li><a class="dropdown-item" href="{%url 'account_orders' %}">My Orders</a></li>
-                {% if  user.profile.pk %}
-                  <li><a class="dropdown-item" href="{%url 'account_profile'%}">My Profile</a></li>
-                  <li><a class="dropdown-item" href="{%url 'account_edit' user.profile.pk%}">Edit Profile</a></li>
-                {% endif %}
-                {%if user.is_authenticated and not user.profile.pk %}
-                  <li><a class="dropdown-item" href="{%url 'create_profile'%}">Create Profile</a></li>
-                {% endif %}
-                <li><a class="dropdown-item" href="{%url 'address' %}">Addresses</a></li>
-                <li>
-                  <hr class="dropdown-divider">
-                </li>
-                {% if user.is_authenticated %}
-                <li><a class="dropdown-item" href="{%url 'logout_user' %}">Logout</a></li>
-                {% else %}
-                <li><a class="dropdown-item" href="{%url 'authentication_login' %}">Login</a></li>
-                <li><a class="dropdown-item" href="{%url 'signup_user' %}">Register</a></li>
-                {% endif %}
-                <li><a class="dropdown-item" href="{%url 'authentication_reset_password'%}">Password</a></li>
+                <li><a class="dropdown-item" href="account-dashboard.html">Dashboard</a></li>
+                <li><a class="dropdown-item" href="account-orders.html">My Orders</a></li>
+                <li><a class="dropdown-item" href="account-profile.html">My Profile</a></li>
+                <li><a class="dropdown-item" href="account-edit-profile.html">Edit Profile</a></li>
+                <li><a class="dropdown-item" href="account-saved-address.html">Addresses</a></li>
+                <li><hr class="dropdown-divider"></li>
+                <li><a class="dropdown-item" href="authentication-login.html">Login</a></li>
+                <li><a class="dropdown-item" href="authentication-register.html">Register</a></li>
+                <li><a class="dropdown-item" href="authentication-reset-password.html">Password</a></li>
               </ul>
             </li>
           </ul>
@@ -185,10 +167,10 @@
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="{%url 'search' %}"><i class="bi bi-search"></i></a>
+          <a class="nav-link" href="search.html"><i class="bi bi-search"></i></a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="{%url 'wishlist' %}"><i class="bi bi-suit-heart"></i></a>
+          <a class="nav-link" href="wishlist.html"><i class="bi bi-suit-heart"></i></a>
         </li>
         <li class="nav-item" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight">
           <a class="nav-link position-relative" href="javascript:;">
@@ -196,15 +178,9 @@
             <i class="bi bi-basket2"></i>
           </a>
         </li>
-        {% if user.is_authenticated %}
-          <li class="nav-item">
-            <a class="nav-link" href="{%url 'account_dashboard'%}"><i class="bi bi-person-circle"></i></a>
-          </li>
-        {% else %}
-        <li class="nav-item ml-3 btn-xs">
-          <a class="nav-link btn btn-outline-info buttons " href="{%url 'authentication_login' %}">Login</a>
+        <li class="nav-item">
+          <a class="nav-link" href="account-dashboard.html"><i class="bi bi-person-circle"></i></a>
         </li>
-        {% endif %}
       </ul>
     </nav>
   </header>
@@ -231,7 +207,7 @@
 
 
    <!--start product grid-->
-   <section class="py-4">
+   <section class="section-padding">
     <h5 class="mb-0 fw-bold d-none">Product Grid</h5>
     <div class="container">
       <div class="btn btn-dark btn-ecomm d-xl-none position-fixed top-50 start-0 translate-middle-y" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbarFilter"><span><i class="bi bi-funnel me-1"></i> Filters</span></div>
@@ -240,7 +216,7 @@
               <nav class="navbar navbar-expand-xl flex-wrap p-0">
                 <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasNavbarFilter" aria-labelledby="offcanvasNavbarFilterLabel">
                   <div class="offcanvas-header">
-                    <h5 class="offcanvas-title mb-0 fw-bold text-uppercase" id="offcanvasNavbarFilterLabel">Filters</h5>
+                    <h5 class="offcanvas-title mb-0 fw-bold" id="offcanvasNavbarFilterLabel">Filters</h5>
                     <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
                   </div>
                   <div class="offcanvas-body">
@@ -575,23 +551,24 @@
                   <div class="d-flex align-items-center justify-content-between bg-light p-2">
                      <div class="product-count">657 Items Found</div>
                      <div class="view-type hstack gap-2 d-none d-xl-flex">
-                      <p class="mb-0">Grid</p>
-                      <div>
-                        <a href="shop-grid.html" class="grid-type-3 d-flex gap-1">
+                        <p class="mb-0">Grid</p>
+                        <div>
+                          <a href="shop-grid.html" class="grid-type-3 d-flex gap-1 active">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                          </a>
+                        </div>
+                        <div>
+                          <a href="{% url 'shop_grid_type_5' %}" class="grid-type-3 d-flex gap-1">
                           <span></span>
                           <span></span>
                           <span></span>
-                        </a>
-                      </div>
-                      <div>
-                        <a href="shop-grid-type-4.html" class="grid-type-3 d-flex gap-1 active">
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                        </a>
-                      </div>
-                   </div>
+                          <span></span>
+                          <span></span>
+                          </a>
+                        </div>
+                     </div>
                      <form>
                       <div class="input-group">
                         <span class="input-group-text bg-transparent rounded-0 border-0">Sort By</span>
@@ -610,7 +587,7 @@
               </div>
 
               <div class="product-grid mt-4">
-                <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-4">
+                <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
                   <div class="col">
                     <div class="card border shadow-none">
                       <div class="position-relative overflow-hidden">
@@ -620,7 +597,7 @@
                           <a href="javascript:;"><i class="bi bi-zoom-in"></i></a>
                         </div>
                         <a href="javascript:;">
-                          <img src="assets/images/featured-products/01.webp" class="card-img-top" alt="...">
+                          <img src="assets/images/best-sellar/02.webp" class="card-img-top" alt="...">
                         </a>
                       </div>
                       <div class="card-body border-top">
@@ -643,7 +620,7 @@
                           <a href="javascript:;"><i class="bi bi-zoom-in"></i></a>
                         </div>
                         <a href="javascript:;">
-                          <img src="assets/images/featured-products/02.webp" class="card-img-top" alt="...">
+                          <img src="assets/images/trending-product/01.webp" class="card-img-top" alt="...">
                         </a>
                       </div>
                       <div class="card-body border-top">
@@ -689,7 +666,7 @@
                           <a href="javascript:;"><i class="bi bi-zoom-in"></i></a>
                         </div>
                         <a href="javascript:;">
-                          <img src="assets/images/featured-products/04.webp" class="card-img-top" alt="...">
+                          <img src="assets/images/special-offer/03.webp" class="card-img-top" alt="...">
                         </a>
                       </div>
                       <div class="card-body border-top">
@@ -735,7 +712,7 @@
                           <a href="javascript:;"><i class="bi bi-zoom-in"></i></a>
                         </div>
                         <a href="javascript:;">
-                          <img src="assets/images/featured-products/06.webp" class="card-img-top" alt="...">
+                          <img src="assets/images/best-sellar/03.webp" class="card-img-top" alt="...">
                         </a>
                       </div>
                       <div class="card-body border-top">
@@ -758,7 +735,7 @@
                           <a href="javascript:;"><i class="bi bi-zoom-in"></i></a>
                         </div>
                         <a href="javascript:;">
-                          <img src="assets/images/featured-products/07.webp" class="card-img-top" alt="...">
+                          <img src="assets/images/trending-product/04.webp" class="card-img-top" alt="...">
                         </a>
                       </div>
                       <div class="card-body border-top">
@@ -827,7 +804,7 @@
                           <a href="javascript:;"><i class="bi bi-zoom-in"></i></a>
                         </div>
                         <a href="javascript:;">
-                          <img src="assets/images/new-arrival/02.webp" class="card-img-top" alt="...">
+                          <img src="assets/images/special-offer/02.webp" class="card-img-top" alt="...">
                         </a>
                       </div>
                       <div class="card-body border-top">
@@ -873,7 +850,7 @@
                           <a href="javascript:;"><i class="bi bi-zoom-in"></i></a>
                         </div>
                         <a href="javascript:;">
-                          <img src="assets/images/new-arrival/04.webp" class="card-img-top" alt="...">
+                          <img src="assets/images/trending-product/03.webp" class="card-img-top" alt="...">
                         </a>
                       </div>
                       <div class="card-body border-top">
@@ -956,37 +933,32 @@
                       </div>
                     </div>
                   </div>
-                  <div class="col">
-                    <div class="card border shadow-none">
-                      <div class="position-relative overflow-hidden">
-                        <div class="product-options d-flex align-items-center justify-content-center gap-2 mx-auto position-absolute bottom-0 start-0 end-0">
-                          <a href="javascript:;"><i class="bi bi-heart"></i></a>
-                          <a href="javascript:;"><i class="bi bi-basket3"></i></a>
-                          <a href="javascript:;"><i class="bi bi-zoom-in"></i></a>
-                        </div>
-                        <a href="javascript:;">
-                          <img src="assets/images/best-sellar/01.webp" class="card-img-top" alt="...">
-                        </a>
-                      </div>
-                      <div class="card-body border-top">
-                        <h6 class="mb-0 fw-bold product-short-title">Syndrona</h6>
-                        <p class="mb-0 product-short-name">Color Printed Kurta</p>
-                        <div class="product-price d-flex align-items-center gap-2 mt-2">
-                          <div class="h6 fw-bold">$458</div>
-                          <div class="h6 fw-light text-muted text-decoration-line-through">$2089</div>
-                          <div class="h6 fw-bold text-danger">(70% off)</div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-
-
               </div><!--end row-->
+            </div>
+
+            <hr class="my-4">
+
+            <div class="product-pagination">
+              <nav>
+                <ul class="pagination justify-content-center">
+                  <li class="page-item disabled">
+                    <a class="page-link">Previous</a>
+                  </li>
+                  <li class="page-item active"><a class="page-link" href="javascript:;">1</a></li>
+                  <li class="page-item"><a class="page-link" href="javascript:;">2</a></li>
+                  <li class="page-item"><a class="page-link" href="javascript:;">3</a></li>
+                  <li class="page-item">
+                    <a class="page-link" href="javascript:;">Next</a>
+                  </li>
+                </ul>
+              </nav>
             </div>
 
             </div>
           </div>
        </div><!--end row-->
+
+       
     </div>
   </section>
    <!--start product details-->
@@ -1071,7 +1043,7 @@
         <div class="d-flex align-items-center gap-3">
           <div class="bottom-product-img">
             <a href="product-details.html">
-              <img src="{% static 'assets/images/new-arrival/01.webp' %}" width="60" alt="">
+              <img src="assets/images/new-arrival/01.webp" width="60" alt="">
             </a>
           </div>
           <div class="">
@@ -1087,7 +1059,7 @@
         <div class="d-flex align-items-center gap-3">
           <div class="bottom-product-img">
             <a href="product-details.html">
-              <img src="{% static 'assets/images/new-arrival/02.webp' %}" width="60" alt="">
+              <img src="assets/images/new-arrival/02.webp" width="60" alt="">
             </a>
           </div>
           <div class="">
@@ -1103,7 +1075,7 @@
         <div class="d-flex align-items-center gap-3">
           <div class="bottom-product-img">
             <a href="product-details.html">
-              <img src="{% static 'assets/images/new-arrival/03.webp' %}" width="60" alt="">
+              <img src="assets/images/new-arrival/03.webp" width="60" alt="">
             </a>
           </div>
           <div class="">
@@ -1119,7 +1091,7 @@
         <div class="d-flex align-items-center gap-3">
           <div class="bottom-product-img">
             <a href="product-details.html">
-              <img src="{% static 'assets/images/new-arrival/04.webp' %}" width="60" alt="">
+              <img src="assets/images/new-arrival/04.webp" width="60" alt="">
             </a>
           </div>
           <div class="">
@@ -1135,7 +1107,7 @@
         <div class="d-flex align-items-center gap-3">
           <div class="bottom-product-img">
             <a href="product-details.html">
-              <img src="{% static 'assets/images/new-arrival/05.webp' %}" width="60" alt="">
+              <img src="assets/images/new-arrival/05.webp" width="60" alt="">
             </a>
           </div>
           <div class="">
@@ -1151,7 +1123,7 @@
         <div class="d-flex align-items-center gap-3">
           <div class="bottom-product-img">
             <a href="product-details.html">
-              <img src="{% static 'assets/images/new-arrival/06.webp' %}" width="60" alt="">
+              <img src="assets/images/new-arrival/06.webp" width="60" alt="">
             </a>
           </div>
           <div class="">
@@ -1167,7 +1139,7 @@
         <div class="d-flex align-items-center gap-3">
           <div class="bottom-product-img">
             <a href="product-details.html">
-              <img src="{% static 'assets/images/new-arrival/07.webp' %}" width="60" alt="">
+              <img src="assets/images/new-arrival/07.webp" width="60" alt="">
             </a>
           </div>
           <div class="">
@@ -1183,7 +1155,7 @@
         <div class="d-flex align-items-center gap-3">
           <div class="bottom-product-img">
             <a href="product-details.html">
-              <img src="{% static 'assets/images/new-arrival/08.webp' %}" width="60" alt="">
+              <img src="assets/images/new-arrival/08.webp" width="60" alt="">
             </a>
           </div>
           <div class="">
@@ -1199,7 +1171,7 @@
         <div class="d-flex align-items-center gap-3">
           <div class="bottom-product-img">
             <a href="product-details.html">
-              <img src="{% static 'assets/images/new-arrival/09.webp' %}" width="60" alt="">
+              <img src="assets/images/new-arrival/09.webp" width="60" alt="">
             </a>
           </div>
           <div class="">
@@ -1215,7 +1187,7 @@
         <div class="d-flex align-items-center gap-3">
           <div class="bottom-product-img">
             <a href="product-details.html">
-              <img src="{% static 'assets/images/new-arrival/10.webp' %}" width="60" alt="">
+              <img src="assets/images/new-arrival/10.webp" width="60" alt="">
             </a>
           </div>
           <div class="">
