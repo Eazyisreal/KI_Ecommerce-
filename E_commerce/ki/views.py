@@ -57,8 +57,11 @@ def account_edit(request, pk):
             profile_check.user = request.user
             profile_check.save()
             return redirect('account_profile')
-        return redirect('account_edit')
-    return render(request, "account_edit_profile.html",{"profile_form":profile_form})
+        else:
+            err = (profiles.errors)
+            print(err)
+            return render(request, "text.html",{"profile_form":profile_form, "errors":err})
+    return render(request, "text.html",{"profile_form":profile_form})
 def billing_details(request):
     return render(request, "billing_details.html")
 

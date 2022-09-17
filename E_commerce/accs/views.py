@@ -9,16 +9,17 @@ from django.contrib.auth import authenticate, login, logout
 
 def signup_user(request):
     form = MyUserForm()
+    context = {'form':form}
     if request.method == "POST":
         form = MyUserForm(request.POST)
         if form.is_valid():
             form.save()
-            messages.info(request, "You have registered successful")
-            return redirect('authentication_login')
-        else:
-            messages.info(request, "invalid input. please try again")
-            return redirect('signup_user')
-    context = {'form':form}
+            email = form.cleaned_data['email']
+            password = form.cleaned_data['password1']
+            user = authenticate(request, email=email, password=password)
+            login(request, user)
+            messages.success(request, "registration successful")
+            return redirect('/')
     return render(request, 'authentication_register.html', context)
 
 def authentication_login(request):

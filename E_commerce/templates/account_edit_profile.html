@@ -67,32 +67,50 @@
                   <hr>
                   <form action="" method="POST">
                     {% csrf_token %}
-                      {% comment %} <div class="row row-cols-1 g-3">
+                      <strong class=" text-danger">{{errors}}</strong>
+                      <br>
+                      <div class="row row-cols-1 g-3">
+                        {% for field in profile_form%}
+                        {% for x in field.errors %}
+                          {{x}}
+                        {% endfor %}
+                        {{err}}
                         <div class="col">
                           <div class="form-floating">
-                            <input type="text" name="name" class="form-control rounded-0" placeholder="Name" >
-                            <label >Name</label>
+                            {%if user.profile.pk %}
+                            <input type="text" value="{{field.value}}" name="{{field.name}}" class="form-control rounded-0" placeholder="+234 xxxxxxxx">
+                            {% else %}
+                            <input type="text" name="{{field.name}}" class="form-control rounded-0" placeholder="Name" >
+                            {% endif %}
+                            <label >{{field.label}}</label>
+                          </div>
+                        </div>
+                        {% endfor%}
+                        {% comment %} <div class="col">
+                          {{profile_form.phone_number.errors}}
+                          <div class="form-floating">
+                            {%if user.profile.pk %}
+                              <input type="text" value={{profile_form.phone_number.value}} name="{{profile_form.phone_number.name}}" class="form-control rounded-0" placeholder="+234 xxxxxxxx">
+                            {% else %}
+                              <input type="text" name="{{profile_form.phone_number.name}}" class="form-control rounded-0" placeholder="+234 xxxxxxxx">
+                            {% endif %}
+                              <label>{{profile_form.phone_number.label}}</label>
                           </div>
                         </div>
                         <div class="col">
                           <div class="form-floating">
-                            <input type="text" name="phone_number" class="form-control rounded-0" placeholder="+234 xxxxxxxx">
-                            <label>Mobile Number(+234 xxxxxxxxxxx)</label>
+                            {{profile_form.date_of_birth.errors}}
+                            <input type="text" name="{{profile_form.date_of_birth.name}}" class="form-control rounded-0"  placeholder="date_of_birth" >
+                            <label for="">{{profile_form.date_of_birth.label}}</label>
                           </div>
                         </div>
                         <div class="col">
                           <div class="form-floating">
-                            <input type="text" name="date_of_birth" class="form-control rounded-0"  placeholder="date_of_birth" >
-                            <label for="">Date Of Birth(yyyy-mm-dd)</label>
-                          </div>
-                        </div>
-                        <div class="col">
-                          <div class="form-floating">
-                            <input type="text" name="location" class="form-control rounded-0"  placeholder="Location" >
-                            <label>Location</label>
-                          </div>
+                            {{profile_form.location.errors}}
+                            <input type="text" name=" {{profile_form.location.name}}" class="form-control rounded-0"  placeholder="Location" >
+                            <label>{{profile_form.location.label}}</label>
+                          </div> 
                         </div> {% endcomment %}
-                        {{profile_form.as_p}}
                         <div class="col">
                           <button type="submit" class="btn btn-dark py-3 btn-ecomm w-100">Save Details</button>
                         </div>

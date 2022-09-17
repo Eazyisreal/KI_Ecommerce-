@@ -7,8 +7,8 @@ class Profile(models.Model):
     user = models.OneToOneField(MyUser, on_delete=models.CASCADE)
     name = models.CharField(max_length=100)
     location = models.CharField(max_length=100, blank=True)
-    phone_number = PhoneNumberField(blank=True, verbose_name="Phone number(+234.....)")
-    date_of_birth = models.DateField(blank=True)
+    phone_number = PhoneNumberField(blank=True, verbose_name="Phone number(+234xxxxxxxxx)")
+    date_of_birth = models.DateField(blank=True, verbose_name="Date of Birth (yyyy-mm-dd)")
     user_image = models.ImageField(upload_to="user_image", blank=True, null=True)
 
     def __str__(self):
