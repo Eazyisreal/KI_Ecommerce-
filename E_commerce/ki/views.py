@@ -1,9 +1,10 @@
 import email
+import profile
 from django.shortcuts import render, redirect
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from ki.forms import ProfileForm, ContactForm
-from ki.models import Profile, Contact
+from ki.models import Profile, Contact, Product, Category
 
 # Create your views here.
 
@@ -11,11 +12,28 @@ from ki.models import Profile, Contact
 def aboutus(request):
     return render(request, "aboutus.html", {})
 
+def base(request):
+    categories = Category.objects.all()
+    context = {"categories":categories}
+    return render(request, "base.html", context)
+    
 def test(request):
-    return render(request, "text.html")
+    profile_form = ProfileForm()
+    if request.method == 'POST':
+        profile_form = ProfileForm(request.POST)
+        if profile_form.is_valid():
+            profile = profile_form.save(commit=False)
+            profile.user = request.user
+            profile.save()
+            return redirect("account_profile")
+    context ={"profile_form": profile_form}
+    return render(request, "text.html", context)
 
 def index(request):
-    return render(request, "index.html", {})
+    products = Product.objects.filter(category__category__contains = "ladies")
+    categories = Category.objects.all()
+    context = {"products":products, "categories":categories}
+    return render(request, "index.html", context)
 
 @login_required(login_url='authentication_login')
 def account_dashboard(request):
@@ -34,21 +52,21 @@ def account_profile(request):
 
 @login_required(login_url='authentication_login')
 def create_profile(request):
+    profile_form = ProfileForm()
     if request.method =='POST':
         form = ProfileForm(request.POST)
         if form.is_valid():
             form_add = form.save(commit=False)
             form_add.user = request.user
             form_add.save()
-            return redirect('/')
-        else:
-            print(form.errors)
-    profile_form = ProfileForm()
+            return redirect('account_profile')
+        error = form.errors
+        return render(request, "account_edit_profile.html", {"profile_form":profile_form, "error":error})
     return render(request, "account_edit_profile.html", {"profile_form":profile_form})
 
 @login_required(login_url='authentication_login')
 def account_edit(request, pk):
-    profile = Profile.objects.get(id=pk)
+    profile = Profile.objects.get(pk=pk)
     profile_form = ProfileForm(instance=profile)
     if request.method == 'POST':
         profiles = ProfileForm(request.POST, instance=profile)
@@ -60,8 +78,8 @@ def account_edit(request, pk):
         else:
             err = (profiles.errors)
             print(err)
-            return render(request, "text.html",{"profile_form":profile_form, "errors":err})
-    return render(request, "text.html",{"profile_form":profile_form})
+            return render(request, "account_eidt_profile.html",{"profile_form":profile_form, "errors":err})
+    return render(request, "account_edit_profile.html",{"profile_form":profile_form})
 def billing_details(request):
     return render(request, "billing_details.html")
 
@@ -87,8 +105,10 @@ def contact_us(request):
 def payment_method(request):
     return render(request, "payment_method.html", {})
 
-def product_details(request):
-    return render(request, "product_details.html", {})
+def product_details(request, pk):
+    product = Product.objects.get(pk=pk)
+    context = {"product":product}
+    return render(request, "product_details.html", context)
 
 def search(request):
     return render(request, "search.html", {})

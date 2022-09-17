@@ -4,7 +4,7 @@ from phonenumber_field.modelfields import PhoneNumberField
 
     
 class Profile(models.Model):
-    user = models.OneToOneField(MyUser, on_delete=models.CASCADE)
+    user = models.OneToOneField(MyUser, primary_key=True, on_delete=models.CASCADE)
     name = models.CharField(max_length=100)
     location = models.CharField(max_length=100, blank=True)
     phone_number = PhoneNumberField(blank=True, verbose_name="Phone number(+234xxxxxxxxx)")
@@ -16,6 +16,9 @@ class Profile(models.Model):
 
 class Category(models.Model):
     category = models.CharField(max_length=100)
+
+    def __str__(self):
+        return self.category
 
 class Product(models.Model):
     name = models.CharField(max_length=100)

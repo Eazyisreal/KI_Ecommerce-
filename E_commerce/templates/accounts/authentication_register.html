@@ -47,42 +47,30 @@
                   <p class="mb-0 fw-bold">Or</p>
                   <div class="line"></div>
                 </div>
+                <strong class="text-danger">{{error}}</strong>
                 <form action="" method="POST">
-                    {% csrf_token %}
-                    {% if form.errors %}
-                    <p>Invalid</p>
-                    {% for error in form.errors %}
-                    <p class="text-center"><strong>{{error}}</strong></p>
-                    {% endfor %}
-                    {% endif %}
-                    <div class="col-12">
-                      <label for="exampleEmail" class="form-label">Email</label>
-                      <input type="email" class="form-control rounded-0" name="email" id="exampleEmail" Required>
-                      {% for err in form.email.errors %}
-                        {{err}}
-                      {% endfor %}
-                    </div>
-                    <div class="col-12">
-                      <label for="examplePassword" class="form-label">Password</label>
-                      <input type="password" class="form-control rounded-0" name="password1" id="examplePassword" Required>
-                      {% for err in password1.errors%}
-                        {{err}}
-                      {% endfor %}
-                    </div>
-                    <div class="col-12">
-                      <label for="examplePassword" class="form-label">Confirm Password</label>
-                      <input type="password" class="form-control rounded-0" name="password2" id="examplePassword" Required>
-                    </div>
-                    <div class="col-12">
-                      <hr class="my-0">
-                    </div>
-                    <div class="col-12 my-2">
-                      <button type="submit" class="btn btn-dark rounded-0 btn-ecomm w-100">Sign Up</button>
-                    </div>
-                    <div class="col-12 text-center mt-4">
-                      <p class="mb-0 rounded-0 w-100">Already have an account? <a href="{%url 'authentication_login' %}" class="text-danger">Sign In</a></p>
-                    </div>
-
+                  {% csrf_token%}
+                  <div class="col-12">
+                    <label for="exampleEmail" class="form-label">Email</label>
+                    <input type="email" class="form-control rounded-0" name="email" id="exampleEmail" Required>
+                  </div>
+                  <div class="col-12">
+                    <label for="examplePassword" class="form-label">Password</label>
+                    <input type="password" class="form-control rounded-0" name="password1" id="examplePassword" Required>
+                  </div>
+                  <div class="col-12">
+                    <label for="examplePassword" class="form-label">Confirm Password</label>
+                    <input type="password" class="form-control rounded-0" name="password2" id="examplePassword" Required>
+                  </div>
+                  <div class="col-12">
+                    <hr class="my-0">
+                  </div>
+                  <div class="col-12 my-2">
+                    <button type="submit" class="btn btn-dark rounded-0 btn-ecomm w-100">Sign Up</button>
+                  </div>
+                  <div class="col-12 text-center mt-4">
+                    <p class="mb-0 rounded-0 w-100">Already have an account? <a href="{%url 'authentication_login' %}" class="text-danger">Sign In</a></p>
+                  </div>
                 </form>
                </div>
              </div>

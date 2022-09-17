@@ -1,4 +1,22 @@
 {% extends "base.html" %}
 {% block content %}
-{{profile_form.as_p}}
+<br>
+<br>
+<form class=" mt-5 my-5" action="" method="POST">
+    {% csrf_token %}
+    {% comment %} {{profile_form.field.errors}} {% endcomment %}
+    {{profile_form.as_p}}
+    <input type="submit">
+</form>
+{% comment %} {% for field in profile_form %} {% endcomment %}
+{% comment %} <div class="col"> 
+  <div class="form-floating">
+   {%if user.profile.pk %}
+   <input type="text" value="{{field.value}}" name="{{field.name}}" class="form-control rounded-0" placeholder="+234 xxxxxxxx">
+   {% else %}
+   <input type="text" name="{{field.name}}" class="form-control rounded-0" placeholder="Name" >
+   {% endif %}
+   <label >{{field.label}}</label>
+ </div> {% endcomment %}
+
 {% endblock %}

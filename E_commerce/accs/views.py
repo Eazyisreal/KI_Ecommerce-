@@ -8,8 +8,8 @@ from django.contrib.auth import authenticate, login, logout
 
 
 def signup_user(request):
-    form = MyUserForm()
-    context = {'form':form}
+    user_form = MyUserForm()
+    context = {'user_form':user_form}
     if request.method == "POST":
         form = MyUserForm(request.POST)
         if form.is_valid():
@@ -20,7 +20,10 @@ def signup_user(request):
             login(request, user)
             messages.success(request, "registration successful")
             return redirect('/')
-    return render(request, 'authentication_register.html', context)
+        error = form.errors
+        context = {'error':error}
+        return render(request, 'accounts/authentication_register.html', context)
+    return render(request, 'accounts/authentication_register.html', context)
 
 def authentication_login(request):
     if request.method == 'POST':
@@ -32,9 +35,9 @@ def authentication_login(request):
             login(request, user)
             return redirect("/")
         else:
-            messages.info(request, "invalid input. Input the correct information")
+            messages.error(request, "invalid input. Input the correct information")
             return redirect('authentication_login')
-    return render(request, "authentication_login.html", {})
+    return render(request, "accounts/authentication_login.html", {})
 
 
 def authentication_reset_password(request):

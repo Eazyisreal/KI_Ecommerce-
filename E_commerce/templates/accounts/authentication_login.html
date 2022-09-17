@@ -52,7 +52,7 @@
                   <form action="" method="POST">
                     {% csrf_token %}
                     {% for message in messages %}
-                    <p class="text-center"><strong>{{message}}</strong></p>
+                    <strong class="text-center text-danger">{{message}}</strong>
                     {% endfor %}
                     <div class="row g-4">
                       <div class="col-12">

@@ -60,11 +60,13 @@
                   <div class="col-12 col-xl-4">
                     <h6 class="large-menu-title">Fashion</h6>
                     <ul class="list-unstyled">
-                      <li><a href="javascript:;">Casual T-Shirts</a>
-                      </li>
-                      <li><a href="javascript:;">Formal Shirts</a>
-                      </li>
-                      <li><a href="javascript:;">Jackets</a>
+                      {% comment %} <li><a href="javascript:;"></a>
+                      </li> {% endcomment %}
+                      {% for category in categories%}
+                        <li><a href="javascript:;">{{category}}</a>
+                        </li>
+                      {% endfor %}
+                      {% comment %} <li><a href="javascript:;">Jackets</a>
                       </li>
                       <li><a href="javascript:;">Jeans</a>
                       </li>
@@ -75,7 +77,7 @@
                       <li><a href="javascript:;">Belts</a>
                       </li>
                       <li><a href="javascript:;">Sports Shoes</a>
-                      </li>
+                      </li> {% endcomment %}
                     </ul>
                   </div>
                   <!-- end col-3 -->

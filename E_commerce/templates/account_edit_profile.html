@@ -60,65 +60,52 @@
             <div class="card rounded-0">
               <div class="card-body p-lg-5">
                 {% if user.profile.pk %}
-                  <h5 class="mb-0 fw-bold">Edit Details</h5>
+                  <h5 class="mb-0 fw-bold">Edit Profile</h5>
                 {% else %}
-                  <h5 class="mb-0 fw-bold">Create Details</h5>
+                  <h5 class="mb-0 fw-bold">Create Profile</h5>
                 {% endif %}
-                  <hr>
-                  <form action="" method="POST">
-                    {% csrf_token %}
-                      <strong class=" text-danger">{{errors}}</strong>
-                      <br>
-                      <div class="row row-cols-1 g-3">
-                        {% for field in profile_form%}
-                        {% for x in field.errors %}
-                          {{x}}
-                        {% endfor %}
-                        {{err}}
-                        <div class="col">
-                          <div class="form-floating">
-                            {%if user.profile.pk %}
-                            <input type="text" value="{{field.value}}" name="{{field.name}}" class="form-control rounded-0" placeholder="+234 xxxxxxxx">
-                            {% else %}
-                            <input type="text" name="{{field.name}}" class="form-control rounded-0" placeholder="Name" >
-                            {% endif %}
-                            <label >{{field.label}}</label>
-                          </div>
-                        </div>
-                        {% endfor%}
-                        {% comment %} <div class="col">
-                          {{profile_form.phone_number.errors}}
-                          <div class="form-floating">
-                            {%if user.profile.pk %}
-                              <input type="text" value={{profile_form.phone_number.value}} name="{{profile_form.phone_number.name}}" class="form-control rounded-0" placeholder="+234 xxxxxxxx">
-                            {% else %}
-                              <input type="text" name="{{profile_form.phone_number.name}}" class="form-control rounded-0" placeholder="+234 xxxxxxxx">
-                            {% endif %}
-                              <label>{{profile_form.phone_number.label}}</label>
-                          </div>
-                        </div>
-                        <div class="col">
-                          <div class="form-floating">
-                            {{profile_form.date_of_birth.errors}}
-                            <input type="text" name="{{profile_form.date_of_birth.name}}" class="form-control rounded-0"  placeholder="date_of_birth" >
-                            <label for="">{{profile_form.date_of_birth.label}}</label>
-                          </div>
-                        </div>
-                        <div class="col">
-                          <div class="form-floating">
-                            {{profile_form.location.errors}}
-                            <input type="text" name=" {{profile_form.location.name}}" class="form-control rounded-0"  placeholder="Location" >
-                            <label>{{profile_form.location.label}}</label>
-                          </div> 
-                        </div> {% endcomment %}
-                        <div class="col">
-                          <button type="submit" class="btn btn-dark py-3 btn-ecomm w-100">Save Details</button>
-                        </div>
-                        <div class="col">
-                          <button type="button" class="btn btn-outline-dark py-3 btn-ecomm w-100" data-bs-toggle="modal" data-bs-target="#ChangePasswordModal">Change Password</button>
-                        </div>
+                <hr>
+                <form action="" method="POST">
+                  {% csrf_token %}
+                  <div class="row row-cols-1 g-3">
+                    <strong class="text-danger">{{error}}</strong>
+                    <div class="col"> 
+                      <div class="form-floating">
+                        {% if user.profile.pk %}
+                        <input type="text" value="{{profile_form.value}}" name="name" class="form-control rounded-0" placeholder="Name" Required>
+                        {% else%}
+                        <input type="text" name="name" class="form-control rounded-0" placeholder="Name" Required>
+                        {% endif %}
+                      <label >{{profile_form.name.label}}</label>
                       </div>
-                  </form>
+                    </div>
+                    <div class="col"> 
+                      <div class="form-floating">
+                      <input type="text" name="location" class="form-control rounded-0" placeholder="Name"  Required>
+                      <label >{{profile_form.location.label}}</label>
+                      </div>
+                    </div>
+                    <div class="col"> 
+                      <div class="form-floating">
+                      <input type="tel" name="phone_number" class="form-control rounded-0" placeholder="Name"  Required>
+                      <label >{{profile_form.phone_number.label}}</label>
+                      </div>
+                    </div>
+                    <div class="col"> 
+                      <div class="form-floating">
+                      <input type="text" name="date_of_birth" class="form-control rounded-0" placeholder="Name"  Required>
+                      <label >{{profile_form.date_of_birth.label}}</label>
+                      </div>
+                    </div>
+
+                    <div class="col">
+                      <button type="submit" class="btn btn-dark py-3 btn-ecomm w-100">Save Details</button>
+                    </div>
+                    <div class="col">
+                      <button type="button" class="btn btn-outline-dark py-3 btn-ecomm w-100" data-bs-toggle="modal" data-bs-target="#ChangePasswordModal">Change Password</button>
+                    </div>
+                  </div>
+                </form>
               </div>
             </div>
           </div>
