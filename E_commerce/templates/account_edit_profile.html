@@ -72,7 +72,7 @@
                     <div class="col"> 
                       <div class="form-floating">
                         {% if user.profile.pk %}
-                        <input type="text" value="{{profile_form.value}}" name="name" class="form-control rounded-0" placeholder="Name" Required>
+                        <input type="text" value="{{profile_form.name.value}}" name="name" class="form-control rounded-0" placeholder="Name" Required>
                         {% else%}
                         <input type="text" name="name" class="form-control rounded-0" placeholder="Name" Required>
                         {% endif %}
@@ -81,20 +81,32 @@
                     </div>
                     <div class="col"> 
                       <div class="form-floating">
-                      <input type="text" name="location" class="form-control rounded-0" placeholder="Name"  Required>
-                      <label >{{profile_form.location.label}}</label>
+                        {% if user.profile.pk %}
+                        <input type="text" name="location" value="{{profile_form.location.value}}" class="form-control rounded-0" placeholder="Name"  Required>
+                        {% else %}
+                        <input type="text" name="location" class="form-control rounded-0" placeholder="Name"  Required>
+                        {% endif %}
+                        <label >{{profile_form.location.label}}</label>
                       </div>
                     </div>
                     <div class="col"> 
                       <div class="form-floating">
-                      <input type="tel" name="phone_number" class="form-control rounded-0" placeholder="Name"  Required>
-                      <label >{{profile_form.phone_number.label}}</label>
+                        {% if user.profile.pk %}
+                          <input type="tel" name="phone_number" value={{profile_form.phone_number.value}} class="form-control rounded-0" placeholder="Name"  Required>
+                        {% else %}
+                          <input type="tel" name="phone_number" class="form-control rounded-0" placeholder="Name"  Required>
+                        {% endif %}
+                          <label >{{profile_form.phone_number.label}}</label>
                       </div>
                     </div>
                     <div class="col"> 
                       <div class="form-floating">
-                      <input type="text" name="date_of_birth" class="form-control rounded-0" placeholder="Name"  Required>
-                      <label >{{profile_form.date_of_birth.label}}</label>
+                        {% if user.profile.pk %}
+                          <input type="text" name="date_of_birth" value={{profile_form.date_of_birth.value}} class="form-control rounded-0" placeholder="Name"  Required>
+                        {% else %}
+                          <input type="text" name="date_of_birth" class="form-control rounded-0" placeholder="Name"  Required>
+                        {% endif %}
+                          <label >{{profile_form.date_of_birth.label}}</label>
                       </div>
                     </div>
 

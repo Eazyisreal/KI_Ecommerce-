@@ -16,7 +16,7 @@ def base(request):
     categories = Category.objects.all()
     context = {"categories":categories}
     return render(request, "base.html", context)
-    
+
 def test(request):
     profile_form = ProfileForm()
     if request.method == 'POST':
@@ -75,10 +75,8 @@ def account_edit(request, pk):
             profile_check.user = request.user
             profile_check.save()
             return redirect('account_profile')
-        else:
-            err = (profiles.errors)
-            print(err)
-            return render(request, "account_eidt_profile.html",{"profile_form":profile_form, "errors":err})
+        error = profiles.errors
+        return render(request, "account_edit_profile.html",{"profile_form":profile_form, "error":error})
     return render(request, "account_edit_profile.html",{"profile_form":profile_form})
 def billing_details(request):
     return render(request, "billing_details.html")
