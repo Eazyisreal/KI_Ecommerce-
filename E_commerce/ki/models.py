@@ -21,11 +21,16 @@ class Category(models.Model):
         return self.category
 
 class Product(models.Model):
+    STATUS = (
+       ( 0 , "normal_product"),
+       ( 1 , "wishlist"),     
+    )
     name = models.CharField(max_length=100)
     description = models.TextField()
     category = models.ManyToManyField(Category)
     price = models.IntegerField()
     images = models.ImageField(upload_to="product_images")
+    status = models.IntegerField(choices=STATUS, default=0)
 
     def __str__ (self):
         return self.name

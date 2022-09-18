@@ -23,5 +23,6 @@ urlpatterns = [
     path('shop_grid_type_5/', views.shop_grid_type_5, name='shop_grid_type_5'),
     path('thank_you/', views.thank_you, name='thank_you'),
     path('wishlist/', views.wishlist, name='wishlist'),
+    path('wish_product/<str:pk>', views.wish_product, name="wish_product"),
     path('test/', views.test, name="test")
 ]

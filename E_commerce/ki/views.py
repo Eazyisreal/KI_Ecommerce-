@@ -1,6 +1,5 @@
-import email
-import profile
-from django.shortcuts import render, redirect
+from operator import ge
+from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from ki.forms import ProfileForm, ContactForm
@@ -30,7 +29,7 @@ def test(request):
     return render(request, "text.html", context)
 
 def index(request):
-    products = Product.objects.filter(category__category__contains = "ladies")
+    products = Product.objects.filter(category__category__contains = "featured_products")
     categories = Category.objects.all()
     context = {"products":products, "categories":categories}
     return render(request, "index.html", context)
@@ -124,11 +123,19 @@ def thank_you(request):
     return render(request, "thank_you.html", {})
 
 def wishlist(request):
-    return render(request, "wishlist.html", {})
+    products = Product.objects.filter(status=1)
+    context = {"products":products}
+    return render(request, "wishlist.html", context)
 
 def address(request):
     return render(request, 'address.html' )
 
-
-
-
+def wish_product(request, pk):
+    wish = get_object_or_404(Product, pk=request.POST.get('product.id'))
+    if wish.status == 0:
+        wish.status = 1
+        wish.save()
+    else:
+        wish.status = 0
+        wish.save()
+    return redirect('/')
