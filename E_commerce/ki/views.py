@@ -1,9 +1,11 @@
+from msilib import CAB
 from operator import ge
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from ki.forms import ProfileForm, ContactForm
 from ki.models import Profile, Contact, Product, Category
+
 
 # Create your views here.
 
@@ -30,8 +32,7 @@ def test(request):
 
 def index(request):
     products = Product.objects.filter(category__category__contains = "featured_products")
-    categories = Category.objects.all()
-    context = {"products":products, "categories":categories}
+    context = {"products":products}
     return render(request, "index.html", context)
 
 @login_required(login_url='authentication_login')
@@ -87,7 +88,10 @@ def blog_read(request):
     return render(request, "blog_read.html", {})
 
 def cart(request):
-    return render(request, "cart.html", {})
+    cart = Product.objects.filter(status_two = 3)
+    product = Product.objects.all()
+    context = {"carts":cart, "products":product}
+    return render(request, "cart.html", context)
 
 def contact_us(request):
     contact = ContactForm()
@@ -139,3 +143,22 @@ def wish_product(request, pk):
         wish.status = 0
         wish.save()
     return redirect('/')
+
+def add_cart(request, pk):
+    add = get_object_or_404(Product, pk= request.POST.get("product.id"))
+    if add.status_two == 2:
+        add.status_two = 3
+        add.save()
+    else:
+        add.status_two = 2
+        add.save()
+    return redirect("/")
+
+def remove_cart(request, pk):
+    remove_item = Product.objects.get(id=pk)
+    print(remove_item.status_two)
+    if remove_item.status_two == 3:
+        remove_item.status_two = 2
+        remove_item.save()
+        print(remove_item.status_two)
+    return redirect('cart')

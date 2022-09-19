@@ -25,12 +25,18 @@ class Product(models.Model):
        ( 0 , "normal_product"),
        ( 1 , "wishlist"),     
     )
+    STATUS2 = (
+        (2, "product"),
+        (3, "Add to Cart")
+    )
+
     name = models.CharField(max_length=100)
     description = models.TextField()
     category = models.ManyToManyField(Category)
     price = models.IntegerField()
     images = models.ImageField(upload_to="product_images")
     status = models.IntegerField(choices=STATUS, default=0)
+    status_two = models.IntegerField(choices=STATUS2, default=2)
 
     def __str__ (self):
         return self.name
@@ -44,6 +50,9 @@ class Order(models.Model):
     def __str__(self):
         return self.products.name
 
+class Add_cart(models.Model):
+    product = models.ForeignKey(Product, on_delete=models.CASCADE)
+    
 class Contact(models.Model):
     name = models.CharField(max_length=100)
     email = models.EmailField(max_length=100)

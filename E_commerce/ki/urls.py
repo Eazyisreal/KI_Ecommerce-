@@ -14,6 +14,8 @@ urlpatterns = [
     path('blog_post/', views.blog_post, name='blog_post'),
     path('blog_read/', views.blog_read, name='blog_read'),
     path('cart/', views.cart, name='cart'),
+    path('add_cart/<str:pk>', views.add_cart, name="add_cart"),
+    path('remove_cart/<str:pk>', views.remove_cart, name="remove_cart"),
     path('contact_us/', views.contact_us, name='contact_us'),
     path('payment_method/', views.payment_method, name='payment_method'),
     path('product_details/<str:pk>', views.product_details, name='product_details'),
@@ -24,5 +26,5 @@ urlpatterns = [
     path('thank_you/', views.thank_you, name='thank_you'),
     path('wishlist/', views.wishlist, name='wishlist'),
     path('wish_product/<str:pk>', views.wish_product, name="wish_product"),
-    path('test/', views.test, name="test")
+    path('test/', views.test, name="test"),
 ]
