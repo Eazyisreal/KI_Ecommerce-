@@ -115,13 +115,11 @@ def search(request):
     return render(request, "search.html", {})
 
 def shop_grid(request):
-    return render(request, "shop_grid.html", {})
+    categories = Category.objects.all()
+    products = Product.objects.all()
+    context = {"categories":categories, "products":products}
+    return render(request, "shop_grid.html", context)
 
-def shop_grid_type_4(request):
-    return render(request, "shop_grid_type_4.html", {})
-
-def shop_grid_type_5(request):
-    return render(request, "shop_grid_type_5.html", {})
 
 def thank_you(request):
     return render(request, "thank_you.html", {})
