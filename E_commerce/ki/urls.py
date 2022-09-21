@@ -27,4 +27,6 @@ urlpatterns = [
     path('wishlist/', views.wishlist, name='wishlist'),
     path('wish_product/<str:pk>', views.wish_product, name="wish_product"),
     path('test/', views.test, name="test"),
+    path('forgot_password/', views.test, name="forgot_password"),
+    
 ]
