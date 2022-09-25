@@ -164,3 +164,9 @@ def remove_cart(request, pk):
         remove_item.save()
         print(remove_item.status_two)
     return redirect('cart')
+
+def forgot_password(request):
+    return render(request, "forgot_password.html", {})
+
+def password_reset(request):
+    return render(request, "password_reset.html", {})
