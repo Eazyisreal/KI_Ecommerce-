@@ -1,10 +1,8 @@
-from msilib import CAB
-from operator import ge
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from ki.forms import ProfileForm, ContactForm
-from ki.models import Profile, Contact, Product, Category
+from ki.models import Profile, Contact, Product, Category, Cart
 
 
 # Create your views here.
@@ -32,7 +30,12 @@ def test(request):
 
 def index(request):
     products = Product.objects.filter(category__category__contains = "featured_products")
-    context = {"products":products}
+    product_new = Product.objects.filter(category__category__contains = "new_arrival")
+    best_selling = Product.objects.filter(category__category__contains="Best Selling")
+    trending = Product.objects.filter(category__category__contains="Trending")
+    special_offer = Product.objects.filter(category__category__contains="Special Offer")
+    # trending = Product.objects.filter(category__category__contains="trending")
+    context = {"products":products, "product_new":product_new, "best_selling":best_selling, "trending":trending, "special_offer":special_offer}
     return render(request, "index.html", context)
 
 @login_required(login_url='authentication_login')
@@ -87,10 +90,10 @@ def blog_post(request):
 def blog_read(request):
     return render(request, "blog_read.html", {})
 
+@login_required(login_url='authentication_login')
 def cart(request):
-    cart = Product.objects.filter(status_two = 3)
-    product = Product.objects.all()
-    context = {"carts":cart, "products":product}
+    cart = Product.objects.filter(username=request.user, status_two=3)
+    context = {"carts":cart}
     return render(request, "cart.html", context)
 
 def contact_us(request):
@@ -125,7 +128,7 @@ def thank_you(request):
     return render(request, "thank_you.html", {})
 
 def wishlist(request):
-    products = Product.objects.filter(status=1)
+    products = Product.objects.filter(username=request.user, status=1)
     context = {"products":products}
     return render(request, "wishlist.html", context)
 
@@ -134,6 +137,7 @@ def address(request):
 
 def wish_product(request, pk):
     wish = get_object_or_404(Product, pk=request.POST.get('product.id'))
+    wish.username.add(request.user)
     if wish.status == 0:
         wish.status = 1
         wish.save()
@@ -143,15 +147,15 @@ def wish_product(request, pk):
     return redirect('/')
 
 def add_cart(request, pk):
-    add = get_object_or_404(Product, pk= request.POST.get("product.id"))
-    if add.status_two == 2:
-        add.status_two = 3
-        add.save()
+    cart = get_object_or_404(Product, pk=request.POST.get('product.id'))
+    cart.username.add(request.user)
+    if cart.status_two == 2:
+        cart.status_two = 3
+        cart.save()
     else:
-        add.status_two = 2
-        add.save()
-    return redirect("/")
-
+        cart.status_two = 2
+        cart.save()
+    return redirect('/')
 def remove_cart(request, pk):
     remove_item = Product.objects.get(id=pk)
     print(remove_item.status_two)

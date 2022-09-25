@@ -29,7 +29,7 @@ class Product(models.Model):
         (2, "product"),
         (3, "Add to Cart")
     )
-
+    username = models.ManyToManyField(MyUser,  null=True)
     name = models.CharField(max_length=100)
     description = models.TextField()
     category = models.ManyToManyField(Category)
@@ -40,6 +40,10 @@ class Product(models.Model):
 
     def __str__ (self):
         return self.name
+
+class Cart(models.Model):
+    user = models.ForeignKey(MyUser, on_delete=models.CASCADE)
+    product = models.ForeignKey(Product, on_delete=models.CASCADE)
 
 class Order(models.Model):
     user = models.ForeignKey(MyUser, on_delete=models.CASCADE)

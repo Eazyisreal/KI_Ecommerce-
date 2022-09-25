@@ -72,6 +72,7 @@
           <div class="card">
             <div class="position-relative overflow-hidden">
               <div class="product-options d-flex align-items-center justify-content-center gap-2 mx-auto position-absolute bottom-0 start-0 end-0">
+                {% if user.isauthenticated%}
                 {% if product.status == 1 %} 
                   <form action="{%url 'wish_product' product.pk %}" method = "POST">
                     {% csrf_token %}
@@ -94,7 +95,8 @@
                     <button type="submit" value="{{product.id}}" name="product.id" ><i class="bi bi-cart-fill"></i></button>
                   </form>
                 {% endif %}
-                  <a href="javascript:;" data-bs-toggle="modal" data-bs-target="#QuickViewModal"><i class="bi bi-zoom-in"></i></a>
+                {% endif %}
+                <a href="{%url 'product_details' product.id %}"><i class="bi bi-zoom-in"></i></a>
               </div>
               <a href="{%url 'product_details' product.id %}">
                 <img src="{{product.images.url}}" class="card-img-top" alt="...">
@@ -155,21 +157,20 @@
         <div class="tab-content tabular-product">
           <div class="tab-pane fade show active" id="new-arrival">
             <div class="row row-cols-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-4 row-cols-xxl-5 g-4">
+              {% for latest in product_new%}
               <div class="col">
                 <div class="card">
                   <div class="position-relative overflow-hidden">
                     <div class="product-options d-flex align-items-center justify-content-center gap-2 mx-auto position-absolute bottom-0 start-0 end-0">
-                      <a href="javascript:;"><i class="bi bi-heart"></i></a>
-                      <a href="javascript:;"><i class="bi bi-basket3"></i></a>
-                      <a href="javascript:;" data-bs-toggle="modal" data-bs-target="#QuickViewModal"><i class="bi bi-zoom-in"></i></a>
+                      <a href="{%url 'product_details' latest.id%}" ><i class="bi bi-zoom-in"></i></a>
                     </div>
-                    <a href="product-details.html">
-                      <img src="{% static 'assets/images/new-arrival/01.webp' %}" class="card-img-top" alt="...">
+                    <a href="{%url 'product_details' latest.id %}">
+                      <img src="{{latest.images.url}}" class="card-img-top" alt="...">
                     </a>
                   </div>
                   <div class="card-body">
                     <div class="product-info text-center">
-                      <h6 class="mb-1 fw-bold product-name">Product Name</h6>
+                      <h6 class="mb-1 fw-bold product-name">{{latest.name}}</h6>
                       <div class="ratings mb-1 h6">
                         <i class="bi bi-star-fill text-warning"></i>
                         <i class="bi bi-star-fill text-warning"></i>
@@ -177,274 +178,30 @@
                         <i class="bi bi-star-fill text-warning"></i>
                         <i class="bi bi-star-fill text-warning"></i>
                       </div>
-                      <p class="mb-0 h6 fw-bold product-price">$49</p>
+                      <p class="mb-0 h6 fw-bold product-price">${{latest.price}}</p>
                     </div>
                   </div>
                 </div>
               </div>
-              <div class="col">
-                <div class="card">
-                  <div class="ribban">New Season</div>
-                  <div class="position-relative overflow-hidden">
-                    <div class="product-options d-flex align-items-center justify-content-center gap-2 mx-auto position-absolute bottom-0 start-0 end-0">
-                      <a href="javascript:;"><i class="bi bi-heart"></i></a>
-                      <a href="javascript:;"><i class="bi bi-basket3"></i></a>
-                      <a href="javascript:;" data-bs-toggle="modal" data-bs-target="#QuickViewModal"><i class="bi bi-zoom-in"></i></a>
-                    </div>
-                    <a href="product-details.html">
-                      <img src="{% static 'assets/images/new-arrival/02.webp' %}" class="card-img-top" alt="...">
-                    </a>
-                  </div>
-                  <div class="card-body">
-                    <div class="product-info text-center">
-                      <h6 class="mb-1 fw-bold product-name">Product Name</h6>
-                      <div class="ratings mb-1 h6">
-                        <i class="bi bi-star-fill text-warning"></i>
-                        <i class="bi bi-star-fill text-warning"></i>
-                        <i class="bi bi-star-fill text-warning"></i>
-                        <i class="bi bi-star-fill text-warning"></i>
-                        <i class="bi bi-star-fill text-warning"></i>
-                      </div>
-                      <p class="mb-0 h6 fw-bold product-price">$49</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="col">
-                <div class="card">
-                  <div class="position-relative overflow-hidden">
-                    <div class="product-options d-flex align-items-center justify-content-center gap-2 mx-auto position-absolute bottom-0 start-0 end-0">
-                      <a href="javascript:;"><i class="bi bi-heart"></i></a>
-                      <a href="javascript:;"><i class="bi bi-basket3"></i></a>
-                      <a href="javascript:;" data-bs-toggle="modal" data-bs-target="#QuickViewModal"><i class="bi bi-zoom-in"></i></a>
-                    </div>
-                    <a href="product-details.html">
-                      <img src="{% static 'assets/images/new-arrival/03.webp' %}" class="card-img-top" alt="...">
-                    </a>
-                  </div>
-                  <div class="card-body">
-                    <div class="product-info text-center">
-                      <h6 class="mb-1 fw-bold product-name">Product Name</h6>
-                      <div class="ratings mb-1 h6">
-                        <i class="bi bi-star-fill text-warning"></i>
-                        <i class="bi bi-star-fill text-warning"></i>
-                        <i class="bi bi-star-fill text-warning"></i>
-                        <i class="bi bi-star-fill text-warning"></i>
-                        <i class="bi bi-star-fill text-warning"></i>
-                      </div>
-                      <p class="mb-0 h6 fw-bold product-price">$49</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="col">
-                <div class="card">
-                  <div class="position-relative overflow-hidden">
-                    <div class="product-options d-flex align-items-center justify-content-center gap-2 mx-auto position-absolute bottom-0 start-0 end-0">
-                      <a href="javascript:;"><i class="bi bi-heart"></i></a>
-                      <a href="javascript:;"><i class="bi bi-basket3"></i></a>
-                      <a href="javascript:;" data-bs-toggle="modal" data-bs-target="#QuickViewModal"><i class="bi bi-zoom-in"></i></a>
-                    </div>
-                    <a href="product-details.html">
-                      <img src="{% static 'assets/images/new-arrival/04.webp' %}" class="card-img-top" alt="...">
-                    </a>
-                  </div>
-                  <div class="card-body">
-                    <div class="product-info text-center">
-                      <h6 class="mb-1 fw-bold product-name">Product Name</h6>
-                      <div class="ratings mb-1 h6">
-                        <i class="bi bi-star-fill text-warning"></i>
-                        <i class="bi bi-star-fill text-warning"></i>
-                        <i class="bi bi-star-fill text-warning"></i>
-                        <i class="bi bi-star-fill text-warning"></i>
-                        <i class="bi bi-star-fill text-warning"></i>
-                      </div>
-                      <p class="mb-0 h6 fw-bold product-price">$49</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="col">
-                <div class="card">
-                  <div class="position-relative overflow-hidden">
-                    <div class="product-options d-flex align-items-center justify-content-center gap-2 mx-auto position-absolute bottom-0 start-0 end-0">
-                      <a href="javascript:;"><i class="bi bi-heart"></i></a>
-                      <a href="javascript:;"><i class="bi bi-basket3"></i></a>
-                      <a href="javascript:;" data-bs-toggle="modal" data-bs-target="#QuickViewModal"><i class="bi bi-zoom-in"></i></a>
-                    </div>
-                    <a href="product-details.html">
-                      <img src="{% static 'assets/images/new-arrival/05.webp' %}" class="card-img-top" alt="...">
-                    </a>
-                  </div>
-                  <div class="card-body">
-                    <div class="product-info text-center">
-                      <h6 class="mb-1 fw-bold product-name">Product Name</h6>
-                      <div class="ratings mb-1 h6">
-                        <i class="bi bi-star-fill text-warning"></i>
-                        <i class="bi bi-star-fill text-warning"></i>
-                        <i class="bi bi-star-fill text-warning"></i>
-                        <i class="bi bi-star-fill text-warning"></i>
-                        <i class="bi bi-star-fill text-warning"></i>
-                      </div>
-                      <p class="mb-0 h6 fw-bold product-price">$49</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="col">
-                <div class="card">
-                  <div class="position-relative overflow-hidden">
-                    <div class="product-options d-flex align-items-center justify-content-center gap-2 mx-auto position-absolute bottom-0 start-0 end-0">
-                      <a href="javascript:;"><i class="bi bi-heart"></i></a>
-                      <a href="javascript:;"><i class="bi bi-basket3"></i></a>
-                      <a href="javascript:;" data-bs-toggle="modal" data-bs-target="#QuickViewModal"><i class="bi bi-zoom-in"></i></a>
-                    </div>
-                    <a href="product-details.html">
-                      <img src="{% static 'assets/images/new-arrival/06.webp' %}" class="card-img-top" alt="...">
-                    </a>
-                  </div>
-                  <div class="card-body">
-                    <div class="product-info text-center">
-                      <h6 class="mb-1 fw-bold product-name">Product Name</h6>
-                      <div class="ratings mb-1 h6">
-                        <i class="bi bi-star-fill text-warning"></i>
-                        <i class="bi bi-star-fill text-warning"></i>
-                        <i class="bi bi-star-fill text-warning"></i>
-                        <i class="bi bi-star-fill text-warning"></i>
-                        <i class="bi bi-star-fill text-warning"></i>
-                      </div>
-                      <p class="mb-0 h6 fw-bold product-price">$49</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="col">
-                <div class="card">
-                  <div class="position-relative overflow-hidden">
-                    <div class="product-options d-flex align-items-center justify-content-center gap-2 mx-auto position-absolute bottom-0 start-0 end-0">
-                      <a href="javascript:;"><i class="bi bi-heart"></i></a>
-                      <a href="javascript:;"><i class="bi bi-basket3"></i></a>
-                      <a href="javascript:;" data-bs-toggle="modal" data-bs-target="#QuickViewModal"><i class="bi bi-zoom-in"></i></a>
-                    </div>
-                    <a href="product-details.html">
-                      <img src="{% static 'assets/images/new-arrival/07.webp' %}" class="card-img-top" alt="...">
-                    </a>
-                  </div>
-                  <div class="card-body">
-                    <div class="product-info text-center">
-                      <h6 class="mb-1 fw-bold product-name">Product Name</h6>
-                      <div class="ratings mb-1 h6">
-                        <i class="bi bi-star-fill text-warning"></i>
-                        <i class="bi bi-star-fill text-warning"></i>
-                        <i class="bi bi-star-fill text-warning"></i>
-                        <i class="bi bi-star-fill text-warning"></i>
-                        <i class="bi bi-star-fill text-warning"></i>
-                      </div>
-                      <p class="mb-0 h6 fw-bold product-price">$49</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="col">
-                <div class="card">
-                  <div class="position-relative overflow-hidden">
-                    <div class="product-options d-flex align-items-center justify-content-center gap-2 mx-auto position-absolute bottom-0 start-0 end-0">
-                      <a href="javascript:;"><i class="bi bi-heart"></i></a>
-                      <a href="javascript:;"><i class="bi bi-basket3"></i></a>
-                      <a href="javascript:;" data-bs-toggle="modal" data-bs-target="#QuickViewModal"><i class="bi bi-zoom-in"></i></a>
-                    </div>
-                    <a href="product-details.html">
-                      <img src="{% static 'assets/images/new-arrival/08.webp' %}" class="card-img-top" alt="...">
-                    </a>
-                  </div>
-                  <div class="card-body">
-                    <div class="product-info text-center">
-                      <h6 class="mb-1 fw-bold product-name">Product Name</h6>
-                      <div class="ratings mb-1 h6">
-                        <i class="bi bi-star-fill text-warning"></i>
-                        <i class="bi bi-star-fill text-warning"></i>
-                        <i class="bi bi-star-fill text-warning"></i>
-                        <i class="bi bi-star-fill text-warning"></i>
-                        <i class="bi bi-star-fill text-warning"></i>
-                      </div>
-                      <p class="mb-0 h6 fw-bold product-price">$49</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="col">
-                <div class="card">
-                  <div class="position-relative overflow-hidden">
-                    <div class="product-options d-flex align-items-center justify-content-center gap-2 mx-auto position-absolute bottom-0 start-0 end-0">
-                      <a href="javascript:;"><i class="bi bi-heart"></i></a>
-                      <a href="javascript:;"><i class="bi bi-basket3"></i></a>
-                      <a href="javascript:;" data-bs-toggle="modal" data-bs-target="#QuickViewModal"><i class="bi bi-zoom-in"></i></a>
-                    </div>
-                    <a href="product-details.html">
-                      <img src="{% static 'assets/images/new-arrival/09.webp' %}" class="card-img-top" alt="...">
-                    </a>
-                  </div>
-                  <div class="card-body">
-                    <div class="product-info text-center">
-                      <h6 class="mb-1 fw-bold product-name">Product Name</h6>
-                      <div class="ratings mb-1 h6">
-                        <i class="bi bi-star-fill text-warning"></i>
-                        <i class="bi bi-star-fill text-warning"></i>
-                        <i class="bi bi-star-fill text-warning"></i>
-                        <i class="bi bi-star-fill text-warning"></i>
-                        <i class="bi bi-star-fill text-warning"></i>
-                      </div>
-                      <p class="mb-0 h6 fw-bold product-price">$49</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="col">
-                <div class="card">
-                  <div class="position-relative overflow-hidden">
-                    <div class="product-options d-flex align-items-center justify-content-center gap-2 mx-auto position-absolute bottom-0 start-0 end-0">
-                      <a href="javascript:;"><i class="bi bi-heart"></i></a>
-                      <a href="javascript:;"><i class="bi bi-basket3"></i></a>
-                      <a href="javascript:;" data-bs-toggle="modal" data-bs-target="#QuickViewModal"><i class="bi bi-zoom-in"></i></a>
-                    </div>
-                    <a href="product-details.html">
-                      <img src="{% static 'assets/images/new-arrival/10.webp' %}" class="card-img-top" alt="...">
-                    </a>
-                  </div>
-                  <div class="card-body">
-                    <div class="product-info text-center">
-                      <h6 class="mb-1 fw-bold product-name">Product Name</h6>
-                      <div class="ratings mb-1 h6">
-                        <i class="bi bi-star-fill text-warning"></i>
-                        <i class="bi bi-star-fill text-warning"></i>
-                        <i class="bi bi-star-fill text-warning"></i>
-                        <i class="bi bi-star-fill text-warning"></i>
-                        <i class="bi bi-star-fill text-warning"></i>
-                      </div>
-                      <p class="mb-0 h6 fw-bold product-price">$49</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
+              {% endfor %}
             </div>
           </div>
           <div class="tab-pane fade" id="best-sellar">
             <div class="row row-cols-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-4 row-cols-xxl-5 g-4">
+              {% for best in best_selling%}
               <div class="col">
                 <div class="card">
                   <div class="position-relative overflow-hidden">
                     <div class="product-options d-flex align-items-center justify-content-center gap-2 mx-auto position-absolute bottom-0 start-0 end-0">
-                      <a href="javascript:;"><i class="bi bi-heart"></i></a>
-                      <a href="javascript:;"><i class="bi bi-basket3"></i></a>
-                      <a href="javascript:;" data-bs-toggle="modal" data-bs-target="#QuickViewModal"><i class="bi bi-zoom-in"></i></a>
+                      <a href="{%url 'product_details' best.id%}" ><i class="bi bi-zoom-in"></i></a>
                     </div>
-                    <a href="product-details.html">
-                      <img src="{% static 'assets/images/best-sellar/01.webp' %}" class="card-img-top" alt="...">
+                    <a href="{%url 'product_details' best.id%}">
+                      <img src="{{best.images.url}}" class="card-img-top" alt="...">
                     </a>
                   </div>
                   <div class="card-body">
                     <div class="product-info text-center">
-                      <h6 class="mb-1 fw-bold product-name">Product Name</h6>
+                      <h6 class="mb-1 fw-bold product-name">{{best.name}}</h6>
                       <div class="ratings mb-1 h6">
                         <i class="bi bi-star-fill text-warning"></i>
                         <i class="bi bi-star-fill text-warning"></i>
@@ -452,279 +209,61 @@
                         <i class="bi bi-star-fill text-warning"></i>
                         <i class="bi bi-star-fill text-warning"></i>
                       </div>
-                      <p class="mb-0 h6 fw-bold product-price">$49</p>
+                      <p class="mb-0 h6 fw-bold product-price">${{best.price}}</p>
                     </div>
                   </div>
                 </div>
               </div>
-              <div class="col">
-                <div class="card">
-                  <div class="position-relative overflow-hidden">
-                    <div class="product-options d-flex align-items-center justify-content-center gap-2 mx-auto position-absolute bottom-0 start-0 end-0">
-                      <a href="javascript:;"><i class="bi bi-heart"></i></a>
-                      <a href="javascript:;"><i class="bi bi-basket3"></i></a>
-                      <a href="javascript:;" data-bs-toggle="modal" data-bs-target="#QuickViewModal"><i class="bi bi-zoom-in"></i></a>
-                    </div>
-                    <a href="product-details.html">
-                      <img src="{%static 'assets/images/best-sellar/02.webp' %}" class="card-img-top" alt="...">
-                    </a>
-                  </div>
-                  <div class="card-body">
-                    <div class="product-info text-center">
-                      <h6 class="mb-1 fw-bold product-name">Product Name</h6>
-                      <div class="ratings mb-1 h6">
-                        <i class="bi bi-star-fill text-warning"></i>
-                        <i class="bi bi-star-fill text-warning"></i>
-                        <i class="bi bi-star-fill text-warning"></i>
-                        <i class="bi bi-star-fill text-warning"></i>
-                        <i class="bi bi-star-fill text-warning"></i>
-                      </div>
-                      <p class="mb-0 h6 fw-bold product-price">$49</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="col">
-                <div class="card">
-                  <div class="position-relative overflow-hidden">
-                    <div class="product-options d-flex align-items-center justify-content-center gap-2 mx-auto position-absolute bottom-0 start-0 end-0">
-                      <a href="javascript:;"><i class="bi bi-heart"></i></a>
-                      <a href="javascript:;"><i class="bi bi-basket3"></i></a>
-                      <a href="javascript:;" data-bs-toggle="modal" data-bs-target="#QuickViewModal"><i class="bi bi-zoom-in"></i></a>
-                    </div>
-                    <a href="product-details.html">
-                      <img src="{% static 'assets/images/best-sellar/03.webp' %}" class="card-img-top" alt="...">
-                    </a>
-                  </div>
-                  <div class="card-body">
-                    <div class="product-info text-center">
-                      <h6 class="mb-1 fw-bold product-name">Product Name</h6>
-                      <div class="ratings mb-1 h6">
-                        <i class="bi bi-star-fill text-warning"></i>
-                        <i class="bi bi-star-fill text-warning"></i>
-                        <i class="bi bi-star-fill text-warning"></i>
-                        <i class="bi bi-star-fill text-warning"></i>
-                        <i class="bi bi-star-fill text-warning"></i>
-                      </div>
-                      <p class="mb-0 h6 fw-bold product-price">$49</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="col">
-                <div class="card">
-                  <div class="ribban bg-primary">New Fashion</div>
-                  <div class="position-relative overflow-hidden">
-                    <div class="product-options d-flex align-items-center justify-content-center gap-2 mx-auto position-absolute bottom-0 start-0 end-0">
-                      <a href="javascript:;"><i class="bi bi-heart"></i></a>
-                      <a href="javascript:;"><i class="bi bi-basket3"></i></a>
-                      <a href="javascript:;" data-bs-toggle="modal" data-bs-target="#QuickViewModal"><i class="bi bi-zoom-in"></i></a>
-                    </div>
-                    <a href="product-details.html">
-                      <img src="{% static 'assets/images/best-sellar/04.webp' %}" class="card-img-top" alt="...">
-                    </a>
-                  </div>
-                  <div class="card-body">
-                    <div class="product-info text-center">
-                      <h6 class="mb-1 fw-bold product-name">Product Name</h6>
-                      <div class="ratings mb-1 h6">
-                        <i class="bi bi-star-fill text-warning"></i>
-                        <i class="bi bi-star-fill text-warning"></i>
-                        <i class="bi bi-star-fill text-warning"></i>
-                        <i class="bi bi-star-fill text-warning"></i>
-                        <i class="bi bi-star-fill text-warning"></i>
-                      </div>
-                      <p class="mb-0 h6 fw-bold product-price">$49</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="col">
-                <div class="card">
-                  <div class="position-relative overflow-hidden">
-                    <div class="product-options d-flex align-items-center justify-content-center gap-2 mx-auto position-absolute bottom-0 start-0 end-0">
-                      <a href="javascript:;"><i class="bi bi-heart"></i></a>
-                      <a href="javascript:;"><i class="bi bi-basket3"></i></a>
-                      <a href="javascript:;" data-bs-toggle="modal" data-bs-target="#QuickViewModal"><i class="bi bi-zoom-in"></i></a>
-                    </div>
-                    <a href="product-details.html">
-                      <img src="{% static 'assets/images/best-sellar/05.webp' %}" class="card-img-top" alt="...">
-                    </a>
-                  </div>
-                  <div class="card-body">
-                    <div class="product-info text-center">
-                      <h6 class="mb-1 fw-bold product-name">Product Name</h6>
-                      <div class="ratings mb-1 h6">
-                        <i class="bi bi-star-fill text-warning"></i>
-                        <i class="bi bi-star-fill text-warning"></i>
-                        <i class="bi bi-star-fill text-warning"></i>
-                        <i class="bi bi-star-fill text-warning"></i>
-                        <i class="bi bi-star-fill text-warning"></i>
-                      </div>
-                      <p class="mb-0 h6 fw-bold product-price">$49</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
+              {% endfor %}
             </div>
           </div>
           <div class="tab-pane fade" id="trending-product">
             <div class="row row-cols-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-4 row-cols-xxl-5 g-4">
-              <div class="col">
-                <div class="card">
-                  <div class="position-relative overflow-hidden">
-                    <div class="product-options d-flex align-items-center justify-content-center gap-2 mx-auto position-absolute bottom-0 start-0 end-0">
-                      <a href="javascript:;"><i class="bi bi-heart"></i></a>
-                      <a href="javascript:;"><i class="bi bi-basket3"></i></a>
-                      <a href="javascript:;" data-bs-toggle="modal" data-bs-target="#QuickViewModal"><i class="bi bi-zoom-in"></i></a>
-                    </div>
-                    <a href="product-details.html">
-                      <img src="{% static 'assets/images/trending-product/01.webp' %}" class="card-img-top" alt="...">
-                    </a>
-                  </div>
-                  <div class="card-body">
-                    <div class="product-info text-center">
-                      <h6 class="mb-1 fw-bold product-name">Product Name</h6>
-                      <div class="ratings mb-1 h6">
-                        <i class="bi bi-star-fill text-warning"></i>
-                        <i class="bi bi-star-fill text-warning"></i>
-                        <i class="bi bi-star-fill text-warning"></i>
-                        <i class="bi bi-star-fill text-warning"></i>
-                        <i class="bi bi-star-fill text-warning"></i>
+              {% for trend in trending%}
+                <div class="col">
+                  <div class="card">
+                    <div class="position-relative overflow-hidden">
+                      <div class="product-options d-flex align-items-center justify-content-center gap-2 mx-auto position-absolute bottom-0 start-0 end-0">
+                        <a href="{%url 'product_details' trend.id%}" ><i class="bi bi-zoom-in"></i></a>
                       </div>
-                      <p class="mb-0 h6 fw-bold product-price">$49</p>
+                      <a href="{%url 'product_details' trend.id%}">
+                        <img src="{{trend.images.url}}" class="card-img-top" alt="...">
+                      </a>
+                    </div>
+                    <div class="card-body">
+                      <div class="product-info text-center">
+                        <h6 class="mb-1 fw-bold product-name">{{trend.name}}</h6>
+                        <div class="ratings mb-1 h6">
+                          <i class="bi bi-star-fill text-warning"></i>
+                          <i class="bi bi-star-fill text-warning"></i>
+                          <i class="bi bi-star-fill text-warning"></i>
+                          <i class="bi bi-star-fill text-warning"></i>
+                          <i class="bi bi-star-fill text-warning"></i>
+                        </div>
+                        <p class="mb-0 h6 fw-bold product-price">${{trend.price}}</p>
+                      </div>
                     </div>
                   </div>
                 </div>
-              </div>
-              <div class="col">
-                <div class="card">
-                  <div class="position-relative overflow-hidden">
-                    <div class="product-options d-flex align-items-center justify-content-center gap-2 mx-auto position-absolute bottom-0 start-0 end-0">
-                      <a href="javascript:;"><i class="bi bi-heart"></i></a>
-                      <a href="javascript:;"><i class="bi bi-basket3"></i></a>
-                      <a href="javascript:;" data-bs-toggle="modal" data-bs-target="#QuickViewModal"><i class="bi bi-zoom-in"></i></a>
-                    </div>
-                    <a href="product-details.html">
-                      <img src="{% static 'assets/images/trending-product/02.webp' %}" class="card-img-top" alt="...">
-                    </a>
-                  </div>
-                  <div class="card-body">
-                    <div class="product-info text-center">
-                      <h6 class="mb-1 fw-bold product-name">Product Name</h6>
-                      <div class="ratings mb-1 h6">
-                        <i class="bi bi-star-fill text-warning"></i>
-                        <i class="bi bi-star-fill text-warning"></i>
-                        <i class="bi bi-star-fill text-warning"></i>
-                        <i class="bi bi-star-fill text-warning"></i>
-                        <i class="bi bi-star-fill text-warning"></i>
-                      </div>
-                      <p class="mb-0 h6 fw-bold product-price">$49</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="col">
-                <div class="card">
-                  <div class="ribban bg-warning text-dark">New Season</div>
-                  <div class="position-relative overflow-hidden">
-                    <div class="product-options d-flex align-items-center justify-content-center gap-2 mx-auto position-absolute bottom-0 start-0 end-0">
-                      <a href="javascript:;"><i class="bi bi-heart"></i></a>
-                      <a href="javascript:;"><i class="bi bi-basket3"></i></a>
-                      <a href="javascript:;" data-bs-toggle="modal" data-bs-target="#QuickViewModal"><i class="bi bi-zoom-in"></i></a>
-                    </div>
-                    <a href="javascript:;">
-                      <img src="{% static 'assets/images/trending-product/03.webp' %}" class="card-img-top" alt="...">
-                    </a>
-                  </div>
-                  <div class="card-body">
-                    <div class="product-info text-center">
-                      <h6 class="mb-1 fw-bold product-name">Product Name</h6>
-                      <div class="ratings mb-1 h6">
-                        <i class="bi bi-star-fill text-warning"></i>
-                        <i class="bi bi-star-fill text-warning"></i>
-                        <i class="bi bi-star-fill text-warning"></i>
-                        <i class="bi bi-star-fill text-warning"></i>
-                        <i class="bi bi-star-fill text-warning"></i>
-                      </div>
-                      <p class="mb-0 h6 fw-bold product-price">$49</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="col">
-                <div class="card">
-                  <div class="position-relative overflow-hidden">
-                    <div class="product-options d-flex align-items-center justify-content-center gap-2 mx-auto position-absolute bottom-0 start-0 end-0">
-                      <a href="javascript:;"><i class="bi bi-heart"></i></a>
-                      <a href="javascript:;"><i class="bi bi-basket3"></i></a>
-                      <a href="javascript:;" data-bs-toggle="modal" data-bs-target="#QuickViewModal"><i class="bi bi-zoom-in"></i></a>
-                    </div>
-                    <a href="product-details.html">
-                      <img src="{% static 'assets/images/trending-product/04.webp' %}" class="card-img-top" alt="...">
-                    </a>
-                  </div>
-                  <div class="card-body">
-                    <div class="product-info text-center">
-                      <h6 class="mb-1 fw-bold product-name">Product Name</h6>
-                      <div class="ratings mb-1 h6">
-                        <i class="bi bi-star-fill text-warning"></i>
-                        <i class="bi bi-star-fill text-warning"></i>
-                        <i class="bi bi-star-fill text-warning"></i>
-                        <i class="bi bi-star-fill text-warning"></i>
-                        <i class="bi bi-star-fill text-warning"></i>
-                      </div>
-                      <p class="mb-0 h6 fw-bold product-price">$49</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="col">
-                <div class="card">
-                  <div class="position-relative overflow-hidden">
-                    <div class="product-options d-flex align-items-center justify-content-center gap-2 mx-auto position-absolute bottom-0 start-0 end-0">
-                      <a href="javascript:;"><i class="bi bi-heart"></i></a>
-                      <a href="javascript:;"><i class="bi bi-basket3"></i></a>
-                      <a href="javascript:;" data-bs-toggle="modal" data-bs-target="#QuickViewModal"><i class="bi bi-zoom-in"></i></a>
-                    </div>
-                    <a href="product-details.html">
-                      <img src="{%static 'assets/images/trending-product/05.webp' %}" class="card-img-top" alt="...">
-                    </a>
-                  </div>
-                  <div class="card-body">
-                    <div class="product-info text-center">
-                      <h6 class="mb-1 fw-bold product-name">Product Name</h6>
-                      <div class="ratings mb-1 h6">
-                        <i class="bi bi-star-fill text-warning"></i>
-                        <i class="bi bi-star-fill text-warning"></i>
-                        <i class="bi bi-star-fill text-warning"></i>
-                        <i class="bi bi-star-fill text-warning"></i>
-                        <i class="bi bi-star-fill text-warning"></i>
-                      </div>
-                      <p class="mb-0 h6 fw-bold product-price">$49</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
+              {% endfor %}
             </div>
           </div>
           <div class="tab-pane fade" id="special-offer">
             <div class="row row-cols-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-4 row-cols-xxl-5 g-4">
+              {% for item in special_offer %}
               <div class="col">
                 <div class="card">
                   <div class="position-relative overflow-hidden">
                     <div class="product-options d-flex align-items-center justify-content-center gap-2 mx-auto position-absolute bottom-0 start-0 end-0">
-                      <a href="javascript:;"><i class="bi bi-heart"></i></a>
-                      <a href="javascript:;"><i class="bi bi-basket3"></i></a>
-                      <a href="javascript:;" data-bs-toggle="modal" data-bs-target="#QuickViewModal"><i class="bi bi-zoom-in"></i></a>
+                      <a href="{%url 'product_details' item.id%}" ><i class="bi bi-zoom-in"></i></a>
                     </div>
-                    <a href="product-details.html">
-                      <img src="{%static 'assets/images/special-offer/01.webp' %}" class="card-img-top" alt="...">
+                    <a href="{%url 'product_details' item.id%}">
+                      <img src="{{item.images.url}}" class="card-img-top" alt="...">
                     </a>
                   </div>
                   <div class="card-body">
                     <div class="product-info text-center">
-                      <h6 class="mb-1 fw-bold product-name">Product Name</h6>
+                      <h6 class="mb-1 fw-bold product-name">{{item.name}}</h6>
                       <div class="ratings mb-1 h6">
                         <i class="bi bi-star-fill text-warning"></i>
                         <i class="bi bi-star-fill text-warning"></i>
@@ -732,120 +271,12 @@
                         <i class="bi bi-star-fill text-warning"></i>
                         <i class="bi bi-star-fill text-warning"></i>
                       </div>
-                      <p class="mb-0 h6 fw-bold product-price">$49</p>
+                      <p class="mb-0 h6 fw-bold product-price">${{item.price}}</p>
                     </div>
                   </div>
                 </div>
               </div>
-              <div class="col">
-                <div class="card">
-                  <div class="position-relative overflow-hidden">
-                    <div class="product-options d-flex align-items-center justify-content-center gap-2 mx-auto position-absolute bottom-0 start-0 end-0">
-                      <a href="javascript:;"><i class="bi bi-heart"></i></a>
-                      <a href="javascript:;"><i class="bi bi-basket3"></i></a>
-                      <a href="javascript:;" data-bs-toggle="modal" data-bs-target="#QuickViewModal"><i class="bi bi-zoom-in"></i></a>
-                    </div>
-                    <a href="product-details.html">
-                      <img src="assets/images/special-offer/02.webp" class="card-img-top" alt="...">
-                    </a>
-                  </div>
-                  <div class="card-body">
-                    <div class="product-info text-center">
-                      <h6 class="mb-1 fw-bold product-name">Product Name</h6>
-                      <div class="ratings mb-1 h6">
-                        <i class="bi bi-star-fill text-warning"></i>
-                        <i class="bi bi-star-fill text-warning"></i>
-                        <i class="bi bi-star-fill text-warning"></i>
-                        <i class="bi bi-star-fill text-warning"></i>
-                        <i class="bi bi-star-fill text-warning"></i>
-                      </div>
-                      <p class="mb-0 h6 fw-bold product-price">$49</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="col">
-                <div class="card">
-                  <div class="ribban">50% Discount</div>
-                  <div class="position-relative overflow-hidden">
-                    <div class="product-options d-flex align-items-center justify-content-center gap-2 mx-auto position-absolute bottom-0 start-0 end-0">
-                      <a href="javascript:;"><i class="bi bi-heart"></i></a>
-                      <a href="javascript:;"><i class="bi bi-basket3"></i></a>
-                      <a href="javascript:;" data-bs-toggle="modal" data-bs-target="#QuickViewModal"><i class="bi bi-zoom-in"></i></a>
-                    </div>
-                    <a href="product-details.html">
-                      <img src="{%static 'assets/images/special-offer/03.webp' %}" aclass="card-img-top" alt="...">
-                    </a>
-                  </div>
-                  <div class="card-body">
-                    <div class="product-info text-center">
-                      <h6 class="mb-1 fw-bold product-name">Product Name</h6>
-                      <div class="ratings mb-1 h6">
-                        <i class="bi bi-star-fill text-warning"></i>
-                        <i class="bi bi-star-fill text-warning"></i>
-                        <i class="bi bi-star-fill text-warning"></i>
-                        <i class="bi bi-star-fill text-warning"></i>
-                        <i class="bi bi-star-fill text-warning"></i>
-                      </div>
-                      <p class="mb-0 h6 fw-bold product-price">$49</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="col">
-                <div class="card">
-                  <div class="position-relative overflow-hidden">
-                    <div class="product-options d-flex align-items-center justify-content-center gap-2 mx-auto position-absolute bottom-0 start-0 end-0">
-                      <a href="javascript:;"><i class="bi bi-heart"></i></a>
-                      <a href="javascript:;"><i class="bi bi-basket3"></i></a>
-                      <a href="javascript:;" data-bs-toggle="modal" data-bs-target="#QuickViewModal"><i class="bi bi-zoom-in"></i></a>
-                    </div>
-                    <a href="product-details.html">
-                      <img src="{%static 'assets/images/special-offer/04.webp' %}" class="card-img-top" alt="...">
-                    </a>
-                  </div>
-                  <div class="card-body">
-                    <div class="product-info text-center">
-                      <h6 class="mb-1 fw-bold product-name">Product Name</h6>
-                      <div class="ratings mb-1 h6">
-                        <i class="bi bi-star-fill text-warning"></i>
-                        <i class="bi bi-star-fill text-warning"></i>
-                        <i class="bi bi-star-fill text-warning"></i>
-                        <i class="bi bi-star-fill text-warning"></i>
-                        <i class="bi bi-star-fill text-warning"></i>
-                      </div>
-                      <p class="mb-0 h6 fw-bold product-price">$49</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="col">
-                <div class="card">
-                  <div class="position-relative overflow-hidden">
-                    <div class="product-options d-flex align-items-center justify-content-center gap-2 mx-auto position-absolute bottom-0 start-0 end-0">
-                      <a href="javascript:;"><i class="bi bi-heart"></i></a>
-                      <a href="javascript:;"><i class="bi bi-basket3"></i></a>
-                      <a href="javascript:;" data-bs-toggle="modal" data-bs-target="#QuickViewModal"><i class="bi bi-zoom-in"></i></a>
-                    </div>
-                    <a href="product-details.html">
-                      <img src="{%static 'assets/images/special-offer/05.webp' %}" class="card-img-top" alt="...">
-                    </a>
-                  </div>
-                  <div class="card-body">
-                    <div class="product-info text-center">
-                      <h6 class="mb-1 fw-bold product-name">Product Name</h6>
-                      <div class="ratings mb-1 h6">
-                        <i class="bi bi-star-fill text-warning"></i>
-                        <i class="bi bi-star-fill text-warning"></i>
-                        <i class="bi bi-star-fill text-warning"></i>
-                        <i class="bi bi-star-fill text-warning"></i>
-                        <i class="bi bi-star-fill text-warning"></i>
-                      </div>
-                      <p class="mb-0 h6 fw-bold product-price">$49</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
+              {% endfor %}
             </div>
           </div>
         </div>
@@ -944,114 +375,6 @@
         </div>
       </div>
     </section>
-    <!--start special product-->
-
-
-    <!--start Brands-->
-    <!-- <section class="section-padding">
-      <div class="container">
-        <div class="text-center pb-3">
-          <h3 class="mb-0 h3 fw-bold">Shop By Brands</h3>
-          <p class="mb-0 text-capitalize">Select your favorite brands and purchase</p>
-        </div>
-        <div class="brands">
-          <div class="row row-cols-2 row-cols-lg-5 g-4">
-            <div class="col">
-              <div class="p-3 border rounded brand-box">
-                <div class="d-flex align-items-center">
-                  <a href="javascript:;">
-                    <img src="{%static 'assets/images/brands/01.webp' %}" class="card-img-top" alt="...fluid" alt="">
-                  </a>
-                </div>
-              </div>
-            </div>
-            <div class="col">
-              <div class="p-3 border rounded brand-box">
-                <div class="d-flex align-items-center">
-                  <a href="javascript:;">
-                    <img src="{%static 'assets/images/brands/02.webp' %}" class="img-fluid" alt="">
-                  </a>
-                </div>
-              </div>
-            </div>
-            <div class="col">
-              <div class="p-3 border rounded brand-box">
-                <div class="d-flex align-items-center">
-                  <a href="javascript:;">
-                    <img src="{%static 'assets/images/brands/03.webp' %}" class="img-fluid" alt="">
-                  </a>
-                </div>
-              </div>
-            </div>
-            <div class="col">
-              <div class="p-3 border rounded brand-box">
-                <div class="d-flex align-items-center">
-                  <a href="javascript:;">
-                    <img src="{%static 'assets/images/brands/04.webp' %}" class="img-fluid" alt="">
-                  </a>
-                </div>
-              </div>
-            </div>
-            <div class="col">
-              <div class="p-3 border rounded brand-box">
-                <div class="d-flex align-items-center">
-                  <a href="javascript:;">
-                    <img src="{%static 'assets/images/brands/05.webp' %}" class="img-fluid" alt="">
-                  </a>
-                </div>
-              </div>
-            </div>
-            <div class="col">
-              <div class="p-3 border rounded brand-box">
-                <div class="d-flex align-items-center">
-                  <a href="javascript:;">
-                    <img src="{% static 'assets/images/brands/06.webp' %}" class="img-fluid" alt="">
-                  </a>
-                </div>
-              </div>
-            </div>
-            <div class="col">
-              <div class="p-3 border rounded brand-box">
-                <div class="d-flex align-items-center">
-                  <a href="javascript:;">
-                    <img src="{% static 'assets/images/brands/07.webp' %}" class="img-fluid" alt="">
-                  </a>
-                </div>
-              </div>
-            </div>
-            <div class="col">
-              <div class="p-3 border rounded brand-box">
-                <div class="d-flex align-items-center">
-                  <a href="javascript:;">
-                    <img src="{%  static 'assets/images/brands/08.webp' %}" class="img-fluid" alt="">
-                  </a>
-                </div>
-              </div>
-            </div>
-            <div class="col">
-              <div class="p-3 border rounded brand-box">
-                <div class="d-flex align-items-center">
-                  <a href="javascript:;">
-                    <img src="{% static 'assets/images/brands/09.webp' %}" class="img-fluid" alt="">
-                  </a>
-                </div>
-              </div>
-            </div>
-            <div class="col">
-              <div class="p-3 border rounded brand-box">
-                <div class="d-flex align-items-center">
-                  <a href="javascript:;">
-                    <img src="{% static 'assets/images/brands/10.webp' %}" class="img-fluid" alt="">
-                  </a>
-                </div>
-              </div>
-            </div>
-          </div>
-          end row-->
-        <!-- </div>
-      </div>
-    </section> -->
-    <!--end Brands-->
 
 
     <!--start cartegory slider-->

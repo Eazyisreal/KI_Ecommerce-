@@ -164,8 +164,7 @@
           <a class="nav-link" href="{%url 'wishlist' %}"><i class="bi bi-suit-heart"></i></a>
         </li>
         <li class="nav-item" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight">
-          <a class="nav-link position-relative" href="javascript:;">
-            <div class="cart-badge">{{carts.count}}</div>
+          <a class="nav-link position-relative" href="{%url 'cart'%}">
             <i class="bi bi-basket2"></i>
           </a>
         </li>
@@ -183,40 +182,7 @@
   </header>
   {% block content %}
   {% endblock %}
-  <div class="offcanvas offcanvas-end" data-bs-scroll="true" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
-    <div class="offcanvas-header bg-section-2">
-      <h5 class="mb-0 fw-bold" id="offcanvasRightLabel"> {{carts.count}} items in the cart</h5>
-      <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-    </div>
-    <div class="offcanvas-body">
-      <div class="cart-list">
-        {% for item in carts%}
-          <div class="d-flex align-items-center gap-3">
-            <div class="bottom-product-img">
-              <a href="product-details.html">
-                <img src="{{item.images.url}}" width="60" alt="">
-              </a>
-            </div>
-            <div class="">
-              <h6 class="mb-0 fw-light mb-1">{{item.name}}</h6>
-              <p class="mb-0"><strong>${{item.price}}</strong>
-              </p>
-            </div>
-            <div class="ms-auto fs-5">
-              <a href="{%url 'remove_cart' item.pk%}" class="link-dark"><i class="bi bi-trash"></i></a>
-            </div>
-          </div>
-          <hr>
-        {% endfor %}
-      </div>
-    </div>
-    <div class="offcanvas-footer p-3 border-top">
-      <div class="d-grid">
-        <button type="button" class="btn btn-lg btn-dark btn-ecomm px-5 py-3">Checkout</button>
-      </div>
-    </div>
 
-  </div>
   <!-- JavaScript files -->
   <script src="{% static 'assets/js/bootstrap.bundle.min.js' %}"></script>
   <script src="{% static 'assets/js/jquery.min.js' %}"></script>
