@@ -8094,9 +8094,6 @@ fieldset:disabled .btn {
     position: absolute !important
 }
 
-.position-fixed {
-    position: fixed !important
-}
 
 .position-sticky {
     position: -webkit-sticky !important;
