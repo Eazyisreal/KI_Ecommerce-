@@ -87,6 +87,18 @@
     }
 }
 
+/* Mobile responsiveness for buynow in index.html */
+  #mm #mobile{
+    display: flex;
+    justify-content: center;
+    float: right;
+    margin-right: 10px;
+    padding:
+    
+
+  }
+
+
 body {
     margin: 0;
     font-family: var(--bs-body-font-family);
