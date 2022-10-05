@@ -3283,14 +3283,14 @@ textarea.form-control.is-invalid {
     -webkit-user-select: none;
     -moz-user-select: none;
     user-select: none;
-    border: var(--bs-btn-border-width) solid var(--bs-btn-border-color);
+    border: 2px solid black;
     border-radius: var(--bs-btn-border-radius);
     background-color: var(--bs-btn-bg);
     transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out
 }
 
 .btn:hover{
-    background-color: midnightblue;
+    background-color: black;
     color: white;
 }
 
@@ -8940,9 +8940,6 @@ fieldset:disabled .btn {
     gap: .5rem !important
 }
 
-.gap-3 {
-    gap: 1rem !important
-}
 
 .gap-4 {
     gap: 1.5rem !important
